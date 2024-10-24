@@ -80,7 +80,7 @@ l proyecto está compuesto por **4 conjuntos de datos diferentes:**
 
 Los únicos valores faltantes se encuentran en las características de promociones (MarkDown1 a 5). Estas no tienen datos antes del 11-11-2011, y aún después de esa fecha, algunos valores siguen faltando. Por lo tanto, aunque el conjunto de datos abarca casi tres años, los datos de promociones solo están disponibles para un año.
 
-![](/images/period_markdown_data.png)
+![](https://guitrena.github.io/portfolio.github.io/images/period_markdown_data.png)
 
 as promociones son específicas de cada tienda, lo que dificulta el relleno de valores faltantes. Para abordar esto, examinamos las tendencias de estas variables en diferentes tipos de tiendas, trazando los valores promedio, máximo y mínimo a lo largo del tiempo _(ver notebook data_exploration.ipynb)._ Descubrimos que las tiendas del mismo tipo mostraban tendencias y dimensiones similares. Con base en esto, rellenamos los valores faltantes usando el promedio para el tipo de tienda correspondiente y la fecha. Cuando no había datos disponibles para ninguna tienda de un grupo dado, usamos 0 como valor por defecto.
 
@@ -103,7 +103,7 @@ En este notebook realizamos una exploración de datos para comprender mejor el c
 
 Como se mencionó anteriormente, el conjunto de datos es grande y necesita segmentarse para un análisis más enfocado. Se desarrolló un dashboard para facilitar esto, proporcionando varios elementos de análisis para cada sección. Aunque no es definitivo para sacar conclusiones, ayuda a comprender el comportamiento de las secciones y sirve como punto de partida para la generación de hipótesis.
 
-![](/images/dashboard_example28.png)
+![](https://guitrena.github.io/portfolio.github.io/images/dashboard_example28.png)
 
 El dashboard consta de cuatro secciones:
  - **Selección de sección:** Permite a los usuarios seleccionar una sección a través de un menú desplegable y mostrar su información mediante un botón.
@@ -136,23 +136,23 @@ Es importante señalar que el conjunto de datos está anonimizado, lo que dificu
 
 #### Sección 28
 
-![](/images/dashboard_example28.png)
+![](https://guitrena.github.io/portfolio.github.io/images/dashboard_example28.png)
 
 En el dashboard, vemos que las ventas de esta sección están correlacionadas con la temperatura, el CPI, el desempleo y los precios del combustible. Sin embargo, esta correlación no implica necesariamente causalidad.
 
 > Para investigar más a fondo la relación entre la temperatura y las ventas, trazamos las dos variables a lo largo del tiempo.
 >
-> ![](/images/temperature_sales28.png)
+> ![](https://guitrena.github.io/portfolio.github.io/images/temperature_sales28.png)
 >
 > Basado en el gráfico, parece razonable concluir que las temperaturas más bajas podrían impulsar mayores ventas en esta sección. Sin embargo, se necesita más contexto para confirmar esta hipótesis.
 
 > Para las demás características correlacionadas, los gráficos de regresión son menos claros en comparación con el gráfico de temperatura. Para profundizar, trazamos la evolución de estas características a lo largo del tiempo.
 >
->![](/images/economic_indicators.png)
+>![](https://guitrena.github.io/portfolio.github.io/images/economic_indicators.png)
 >
 > Las tendencias para el IPC, los precios del combustible y el desempleo son evidentes: el IPC y los precios del combustible están aumentando, mientras que el desempleo está disminuyendo. Las ventas de la Sección 28 también muestran una tendencia a la baja, con una caída del 14%. Esto explica la correlación entre las ventas y estas características. <br>
 >
->![](/images/trend28.png)
+>![](https://guitrena.github.io/portfolio.github.io/images/trend28.png)
 >
 >  Sin embargo, no podemos concluir definitivamente la causalidad debido a la falta de información contextual. Por ejemplo, el segundo invierno tuvo temperaturas más cálidas, lo que podría explicar la disminución en las ventas.
 
@@ -163,25 +163,25 @@ En el dashboard, vemos que las ventas de esta sección están correlacionadas co
 
 #### Sección 22
 
-![](/images/dashboard_example22.png)
+![](https://guitrena.github.io/portfolio.github.io/images/dashboard_example22.png)
 
 El dashboard indica correlaciones entre las ventas en esta sección y todas las variables clave. Sin embargo, la correlación no necesariamente implica causalidad.
 
 > Para investigar más la relación entre la temperatura y las ventas, trazamos ambas variables a lo largo del tiempo.
 >
->![](/images/temperature_sales22.png)
+>![](https://guitrena.github.io/portfolio.github.ioimages/temperature_sales22.png)
 >
 > El gráfico sugiere que la temperatura no afecta significativamente las ventas, que se mantienen estables excepto por dos picos. Exploraremos estos picos a continuación.
 
 > Para investigar la relación entre los periodos de vacaciones y las ventas, también los trazamos.
 >
->![](/images/holidays_sales22.png)
+>![](https://guitrena.github.io/portfolio.github.io/images/holidays_sales22.png)
 >
 > Los dos picos coinciden exactamente con el Día de Acción de Gracias y Navidad. Como se muestra en el gráfico estacional del dashboard, las ventas durante estas semanas son casi un 100% más altas de lo habitual.
 
 > Para las demás características (CPI, desempleo, precio del combustible), la relación es similar a la de la Sección 28. El CPI y los precios del combustible tienden al alza, el desempleo tiende a la baja y las ventas en la Sección 22 muestran una tendencia decreciente (8.7%).
 >
->![](/images/trend22.png)
+>![](https://guitrena.github.io/portfolio.github.io/images/trend22.png)
 >
 > Sin embargo, sin más contexto, no podemos afirmar la causalidad.
 
@@ -210,7 +210,7 @@ Finalmente, graficamos los datos históricos junto con el pronóstico para anali
 Además, decidimos limitar esta estrategia a un número reducido de modelos. Específicamente, elegimos entrenar modelos solo para las secciones 22 y 28, y la tienda 1, lo que redujo el número de casos de 3,211 a 160. Esta decisión se debió a limitaciones computacionales. Por ejemplo, el lote seleccionado tomó casi 6 horas en procesarse. Estimando el tiempo requerido para entrenar todo el conjunto de datos, hubiera tomado aproximadamente 120 horas.
 
 A continuación, se presenta un diagrama que resume todo el proceso:
-![](/images/process_diagram.png)
+![](https://guitrena.github.io/portfolio.github.io/images/process_diagram.png)
 
 ### Resultados
 
@@ -230,7 +230,7 @@ Después de eso, graficamos y analizamos los mejores y peores casos dentro de ca
 > - Más del 70% de las combinaciones tienen características correlacionadas.
 > - Las variables externas son relevantes solo en el 32% de los casos.
 >
->![](/images/summary22.png)
+>![](https://guitrena.github.io/portfolio.github.io/images/summary22.png)
 
 > **Mejor predicción:** Tienda 23 con un error de 12.13%.
 >
@@ -240,7 +240,7 @@ Después de eso, graficamos y analizamos los mejores y peores casos dentro de ca
 > - El pico de Navidad no está tan mal pronosticado como parece. La semana anterior a Navidad se sobreestima por 5,954, y la semana de Navidad se subestima por 6,784. Si estas dos semanas se agrupan en un "período navideño", la subestimación es de solo 838 para todo el período.
 > - En cuanto al segundo período (agosto), no tenemos contexto para explicar el pico. Sin saber qué representa la sección y dónde está ubicada la tienda, es difícil comprender completamente la subestimación.
 >
->![](/images/best22.png)
+>![](https://guitrena.github.io/portfolio.github.io/images/best22.png)
 
 
 > **Peor predicción:** Tienda 39 con un error de 47.62%.
@@ -251,11 +251,11 @@ Después de eso, graficamos y analizamos los mejores y peores casos dentro de ca
 > - Después de corregir el modelo, ajustando el rango de AUTO ARIMA (específicamente modificando el valor "D", que estaba preestablecido en 1), el error se redujo del 47.62% al 15.06%. Esta corrección también redujo el error promedio del 20.21% al 19.33%.
 > - Otros casos pueden tener problemas similares.
 >
->![](/images/worst22.png)
+>![](https://guitrena.github.io/portfolio.github.io/images/worst22.png)
 >
 > Después de la corrección, el modelo cambió de ARIMA(1,0,1)(1,1,0)[52] a ARIMA(1,1,2)(1,0,0)[52].
 >
->![](/images/worst22_corrected.png)
+>![](https://guitrena.github.io/portfolio.github.io/images/worst22_corrected.png)
 
 
 #### Sección 28
@@ -263,7 +263,7 @@ Después de eso, graficamos y analizamos los mejores y peores casos dentro de ca
 > - El peor caso muestra un porcentaje de error extremadamente alto (119.76%).
 > - El 95% de las combinaciones muestran características correlacionadas, pero solo el 23% de los casos rindieron mejor con el modelo SARIMAX.
 >
->![](/images/summary28.png)
+>![](https://guitrena.github.io/portfolio.github.io/images/summary28.png)
 
 
 >**Mejor predicción:** Tienda 23 con un error de 12.13%.
@@ -272,7 +272,7 @@ Después de eso, graficamos y analizamos los mejores y peores casos dentro de ca
 > - El mejor modelo es **SARIMA** (SARIMAX también entrenado).
 > - SARIMA generalmente tiende a sobreestimar las ventas, mientras que SARIMAX generalmente subestima. Una combinación de ambos podría ser mejor.
 >
->![](/images/best28.png)
+>![](https://guitrena.github.io/portfolio.github.io/images/best28.png)
 
 > **Peor predicción:** Tienda 39 con un error de 119.76%.
 >
@@ -280,7 +280,7 @@ Después de eso, graficamos y analizamos los mejores y peores casos dentro de ca
 > - El modelo utilizado es **SARIMA.**
 > - El alto porcentaje de error es impulsado por un pico extremo en ventas durante la última semana de mayo. Este pico ocurrió en 2011, pero no estuvo presente en 2010 o 2009. Nos falta información contextual sobre la sección y la ubicación para explicar el aumento repentino en 2011.
 >
->![](/images/worst28.png)
+>![](https://guitrena.github.io/portfolio.github.io/images/worst28.png)
 
 #### Tienda 1
 
@@ -289,7 +289,7 @@ Después de eso, graficamos y analizamos los mejores y peores casos dentro de ca
 > - Sin embargo, el mejor caso muestra un resultado muy sólido con un error de solo 4.12%.
 > - El 70% de las combinaciones muestran características correlacionadas, pero solo el 29% de los casos rindieron mejor con el modelo SARIMAX.
 >
->![](/images/summary1.png)
+>![](https://guitrena.github.io/portfolio.github.io/images/summary1.png)
 
 
 >**Mejor predicción:** Sección 95 con un error de 4.12%.  
@@ -298,7 +298,7 @@ Después de eso, graficamos y analizamos los mejores y peores casos dentro de ca
 > - El mejor modelo es **SARIMAX** (SARIMA también entrenado).
 > - La predicción es bastante precisa.
 >
->![](/images/best1.png)
+>![](https://guitrena.github.io/portfolio.github.io/images/best1.png)
 
 >**Peor predicción:** Sección 59 con un error de 175.1%.
 >
@@ -308,7 +308,7 @@ Después de eso, graficamos y analizamos los mejores y peores casos dentro de ca
 > - Sin más contexto, es difícil explicar la gran variación entre los dos años.
 > - Aunque SARIMA tuvo un mejor RMSE, el modelo SARIMAX funcionó mejor al excluir el pico.
 >
->![](/images/worst1.png)
+>![](https://guitrena.github.io/portfolio.github.io/images/worst1.png)
 
 ## 4. Próximos pasos
 - Entrenar modelos adicionales (por ejemplo, modelos de regresión) y aplicar técnicas de bagging.

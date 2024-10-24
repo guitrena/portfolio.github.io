@@ -38,11 +38,11 @@ summary: "Analysis of the rental market in Valencia, Spain, with the development
 
 > Before diving into the details, it’s important to note that data on this subject is highly valuable, which is why major rental websites protect it carefully. As a result, **the data used in this project is not as complete as we would like.** For instance, not every district in Valencia has sufficient information to be reliable. The model trained only includes the districts marked in green on the following map, while other areas are aggregated, making them less precise.
 >
-> ![Data available map](/images/map_data_available.png)
+> ![Data available map](https://guitrena.github.io/portfolio.github.io/images/map_data_available.png)
 
 > ### Price distribution
 >
->![Price boxplot](/images/price_distribution.png)
+>![Price boxplot](https://guitrena.github.io/portfolio.github.io/images/price_distribution.png)
 
 ### Technical key points
 ***
@@ -118,10 +118,10 @@ A complete analysis of the dataset's characteristics is available in the _**Data
 ### 2.1. Price per square meter by Location
 
  One of the most common metrics for understanding the real estate market is the price per square meter. This variable was calculated, and the graph below shows the districts with the highest and lowest prices. Though simple, this metric is crucial for grasping the city's real estate dynamics.
- ![Top 5 and bottom 5 prices per square meter](/images/highest_lowest_prices.png) <br><br><br>
+ ![Top 5 and bottom 5 prices per square meter](https://guitrena.github.io/portfolio.github.io/images/highest_lowest_prices.png) <br><br><br>
 
  The map below illustrates the price per square meter for each district, showing a clear pattern: **districts in the city center are more expensive** than those farther away. Additionally, **some districts near the center may represent market opportunities** due to their relatively lower prices.
- ![Price map](/images/map_price.png)
+ ![Price map](https://guitrena.github.io/portfolio.github.io/images/map_price.png)
 
 
 
@@ -132,13 +132,13 @@ A complete analysis of the dataset's characteristics is available in the _**Data
 >
 > **<ins>Hypothesis 2:</ins> Houses with more rooms are located in lower €/m² zones.**
 
- ![Price per square meter boxplots by rooms](/images/price_distribution_rooms.png)
+ ![Price per square meter boxplots by rooms](https://guitrena.github.io/portfolio.github.io/images/price_distribution_rooms.png)
 
 #### 2.2.1. Size by number of rooms
 
 To check the first hypothesis, the average surface area for each room count was plotted. **Houses with just one room average 50 m², and the largest increase in surface area (66%) occurs between one- and two-room houses.** We can conclude that one-room houses are significantly smaller.
 
-![Average surface by rooms](/images/average_surface_rooms.png)
+![Average surface by rooms](https://guitrena.github.io/portfolio.github.io/images/average_surface_rooms.png)
 
 #### 2.2.2. Nº of rooms by location
 
@@ -146,7 +146,7 @@ To verify the second hypothesis, locations were categorized by price per square 
 
 '                          | '                         
 :-------------------------:|:--------------------------:
-![Price map by range](/images/map_price_range.png) | ![Price map by range](/images/average_n_rooms.png)
+![Price map by range](https://guitrena.github.io/portfolio.github.io/images/map_price_range.png) | ![Price map by range](https://guitrena.github.io/portfolio.github.io/images/average_n_rooms.png)
 
 
 ## 3. Modelling
@@ -164,7 +164,7 @@ After preprocessing the data, several regression models were trained. While vari
 - RandomForestRegresor: _Noteworthy performance in test (RMSE=460 // Best) and massive difference with training (RMSE=235) due to overfitting what might make it optimizable using specific hyperparameters_
 - GradientBoostingRegressor: _Best perfomance in test **(RMSE=460)**_
 
-![First models results](/images/First_models_results.png)
+![First models results](https://guitrena.github.io/portfolio.github.io/images/First_models_results.png)
 
 
 ### 3.2. Optimization
@@ -175,12 +175,12 @@ After the initial results, an optimization process was undertaken to achieve the
 
 >To understand model performance, the differences between the Random Forest model predictions and actual values were analyzed. The highest differences were for highly underestimated listings.
 >
-> ![Histogram extreme values](/images/histogram_extreme_values.png)
+> ![Histogram extreme values](https://guitrena.github.io/portfolio.github.io/images/histogram_extreme_values.png)
 
 > A scatter plot comparing predictions with real values shows that **extreme values (over €2925) are consistently underestimated** and represent most of the largest errors. In the graph below, we can see also three lines that mark the perfect estimation and the range of +/- 300 (RMSE objective).
 >
 >
-> ![Pred vs Real](/images/predvsreal_extreme_values.png)
+> ![Pred vs Real](https://guitrena.github.io/portfolio.github.io/images/predvsreal_extreme_values.png)
 >
 > **The approach was to drop many of these extreme values** to reduce the artificial error and avoid overestimations in other observations.  Not all extreme values were removed to prevent, on one hand, excessive data loss, and on another one, underestimations in offers around the threshold.
 >
@@ -193,7 +193,7 @@ While analyzing the most underestimated offers in the website scraped, we identi
 
 To assess the impact of the agent on rental prices, we plotted a histogram showing the distribution of price per square meter for different agents. The results revealed a clear distinction, with a gap around 23 €/m², which led to the creation of a **new binary feature, 'Agent_cat', which can be interpreted as distinguishing between premium and non-premium properties.**
 
-![Histogram agents](/images/histogram_agents.png)
+![Histogram agents](https://guitrena.github.io/portfolio.github.io/images/histogram_agents.png)
 
 By incorporating this new feature into the model, we achieved an improvement in performance. For example, the **Gradient Boosting model reached a test RMSE of 305.**
 
@@ -201,7 +201,7 @@ By incorporating this new feature into the model, we achieved an improvement in 
 
 Following the introduction of the 'Agent_cat' feature, the Random Forest model had an RMSE of 148 on the training set and 317 on the test set. This significant gap suggested overfitting, prompting an attempt to optimize the hyperparameters in order to improve the model's performance. However, the resulting test RMSE of 306 was not a substantial improvement, making it insufficient to outperform the Gradient Boosting model.
 
-![Final models results](/images/Final_models_results.png)
+![Final models results](https://guitrena.github.io/portfolio.github.io/images/Final_models_results.png)
 
 **Therefore, the final model selected for use is the Gradient Boosting regressor, which achieved a test RMSE of 305.**
 

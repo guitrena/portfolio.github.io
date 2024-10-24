@@ -7,11 +7,7 @@ menu:
   main:
     weight: 1
 ---
-<<<<<<< HEAD
 {{< figure src="https://guitrena.github.io/portfolio.github.io/images/foto_perfil_bw.png" >}}
-=======
-{{< figure src="~/images/foto_perfil_bw.png" >}}
->>>>>>> 5f386076be443054059de1336e560856eb0a6a78
 
 "It is never too late to be what you might have been." — George Eliot
 

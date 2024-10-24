@@ -33,15 +33,15 @@ summary: "Análisis del mercado de alquiler en Valencia, España, con el desarro
 >
 > Además, **se entrenó un modelo para estimar los precios de alquiler**, proporcionando una estimación preliminar basada en el entorno inmobiliario de Valencia. Si estás considerando invertir en una propiedad para alquilar, también puedes usar este modelo para comparar precios de compra potenciales con los ingresos estimados de alquiler.
 >
->![prediction example](/images/prediction_example.gif)
+>![prediction example](https://guitrena.github.io/portfolio.github.io/images/prediction_example.gif)
 
 > Antes de entrar en detalles, es importante señalar que los datos sobre este tema son muy valiosos, por lo que los principales sitios web de alquiler los protegen cuidadosamente. Como resultado, **los datos utilizados en este proyecto no son tan completos como nos gustaría.** Por ejemplo, no todos los distritos de Valencia tienen información suficiente para ser confiables. El modelo entrenado solo incluye los distritos marcados en verde en el siguiente mapa, mientras que otras áreas están agregadas, lo que las hace menos precisas.
 >
-> ![Data available map](/images/map_data_available.png)
+> ![Data available map](https://guitrena.github.io/portfolio.github.io/images/map_data_available.png)
 
 > ### Distribución de precios
 >
->![Price boxplot](/images/price_distribution.png)
+>![Price boxplot](https://guitrena.github.io/portfolio.github.io/images/price_distribution.png)
 
 ### Puntos técnicos clave
 ***
@@ -124,11 +124,11 @@ Un análisis completo de las características del conjunto de datos está dispon
 
 Una de las métricas más comunes para comprender el mercado inmobiliario es el precio por metro cuadrado. Esta variable fue calculada, y el gráfico a continuación muestra los distritos con los precios más altos y más bajos. Aunque es simple, esta métrica es crucial para comprender la dinámica inmobiliaria de la ciudad.
 
- ![Top 5 and bottom 5 prices per square meter](/images/highest_lowest_prices.png) <br><br><br>
+ ![Top 5 and bottom 5 prices per square meter](https://guitrena.github.io/portfolio.github.io/images/highest_lowest_prices.png) <br><br><br>
 
 El siguiente mapa ilustra el precio por metro cuadrado en cada barrio, mostrando un patrón claro: **los barrios en el centro de la ciudad son más caros** que los más alejados. Además, **algunos distritos cercanos al centro pueden representar oportunidades de mercado** debido a sus precios relativamente más bajos.
 
- ![Price map](/images/map_price.png)
+ ![Price map](https://guitrena.github.io/portfolio.github.io/images/map_price.png)
 
 
 
@@ -139,13 +139,13 @@ Normalmente, se esperaría que cuantas más habitaciones tenga una vivienda, má
 >
 > **<ins>Hipótesis 2:</ins> Las viviendas con más habitaciones se encuentran en zonas con menor €/m².**
 
- ![Price per square meter boxplots by rooms](/images/price_distribution_rooms.png)
+ ![Price per square meter boxplots by rooms](https://guitrena.github.io/portfolio.github.io/images/price_distribution_rooms.png)
 
 #### 2.2.1. Tamaño según número de habitaciones
 
 Para verificar la primera hipótesis, se graficó la superficie promedio para cada número de habitaciones. **Las viviendas de una habitación tienen un promedio de 50 m², y el mayor incremento en superficie (66%) ocurre entre viviendas de una y dos habitaciones.** Podemos concluir que las viviendas de una habitación son significativamente más pequeñas.
 
-![Average surface by rooms](/images/average_surface_rooms.png)
+![Average surface by rooms](https://guitrena.github.io/portfolio.github.io/images/average_surface_rooms.png)
 
 #### 2.2.2. Número de habitaciones por ubicación
 
@@ -153,7 +153,7 @@ Para verificar la segunda hipótesis, se clasificaron las ubicaciones según el 
 
 '                          | '                         
 :-------------------------:|:--------------------------:
-![Price map by range](/images/map_price_range.png) | ![Price map by range](/images/average_n_rooms.png)
+![Price map by range](https://guitrena.github.io/portfolio.github.io/images/map_price_range.png) | ![Price map by range](https://guitrena.github.io/portfolio.github.io/images/average_n_rooms.png)
 
 
 ## 3. Modelo
@@ -171,7 +171,7 @@ Después de preprocesar los datos, se entrenaron varios modelos de regresión. A
 - RandomForestRegresor: _Rendimiento notable en el test (RMSE=460 // Mejor) y gran diferencia con el entrenamiento (RMSE=235) debido a overfitting, lo que podría ser optimizable con hiperparámetros específicos_
 - GradientBoostingRegressor: _Mejor rendimiento en el test **(RMSE=460)**_
 
-![First models results](/images/First_models_results.png)
+![First models results](https://guitrena.github.io/portfolio.github.io/images/First_models_results.png)
 
 
 ### 3.2. Optimización
@@ -182,12 +182,12 @@ Después de los resultados iniciales, se llevó a cabo un proceso de optimizaci�
 
 >Para entender el rendimiento del modelo, se analizaron las diferencias entre las predicciones del modelo Random Forest y los valores reales. Las mayores diferencias fueron en predicciones altamente subestimadas.
 >
-> ![Histogram extreme values](/images/histogram_extreme_values.png)
+> ![Histogram extreme values](https://guitrena.github.io/portfolio.github.io/images/histogram_extreme_values.png)
 
 > Un diagrama de dispersión comparando las predicciones con los valores reales muestra que **los valores extremos (por encima de €2925) son consistentemente subestimados** y representan la mayoría de los errores más grandes. En el gráfico a continuación también se ven tres líneas que marcan la estimación perfecta y el rango de +/- 300 (objetivo de RMSE).
 >
 >
-> ![Pred vs Real](/images/predvsreal_extreme_values.png)
+> ![Pred vs Real](https://guitrena.github.io/portfolio.github.io/images/predvsreal_extreme_values.png)
 >
 > **El enfoque fue eliminar muchos de estos valores extremos** para reducir el error artificial y evitar sobreestimaciones en otras observaciones. No se eliminaron todos los valores extremos para evitar, por un lado, una pérdida excesiva de datos y, por otro, subestimaciones en ofertas alrededor del umbral.
 >
@@ -202,7 +202,7 @@ Durante el análisis de las ofertas más subestimadas en el sitio web donde proc
 Para evaluar el impacto de la agencia en los precios de alquiler, se graficó un histograma que mostraba la distribución del precio por metro cuadrado para diferentes agencias. Los resultados revelaron una clara distinción, con una brecha alrededor de 23 €/m², lo que llevó a la creación de **una nueva característica binaria, 'Agent_cat', que puede ser interpretada como la distinción entre propiedades premium y no premium.**
 
 
-![Histogram agents](/images/histogram_agents.png)
+![Histogram agents](https://guitrena.github.io/portfolio.github.io/images/histogram_agents.png)
 
 Al incorporar esta nueva característica en el modelo, se logró una mejora en el rendimiento. Por ejemplo, **el modelo Gradient Boosting alcanzó un RMSE de prueba de 305.**
 
@@ -210,7 +210,7 @@ Al incorporar esta nueva característica en el modelo, se logró una mejora en e
 
 Después de la introducción de la característica 'Agent_cat', el modelo Random Forest tuvo un RMSE de 148 en el conjunto de entrenamiento y 317 en el de prueba. Esta brecha significativa sugería overfitting, por lo que se intentó optimizar los hiperparámetros para mejorar el rendimiento del modelo. Sin embargo, el RMSE resultante en el conjunto de prueba, de 306, no fue una mejora sustancial lo que lo hizo insuficiente para superar al modelo Gradient Boosting.
 
-![Final models results](/images/Final_models_results.png)
+![Final models results](https://guitrena.github.io/portfolio.github.io/images/Final_models_results.png)
 
 **Por lo tanto, el modelo final seleccionado es el Gradient Boosting regressor, que logró un RMSE de prueba de 305.**
 

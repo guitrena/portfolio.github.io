@@ -79,7 +79,7 @@ The project is composed of **4 different datasets:**
 
 The only missing values are in the markdown features (MarkDown1 to 5). These features have no data before 11-11-2011, and even after that date, some values remain missing. Therefore, while the full dataset spans nearly three years, markdown data is only available for one year.   
 
-![](/images/period_markdown_data.png)
+![](https://guitrena.github.io/portfolio.github.io/images/period_markdown_data.png)
 
 Markdowns are store-specific, making it difficult to fill missing values. To address this, we examined the trends of these variables across store types, plotting the mean, maximum, and minimum values over time _(see the data_exploration.ipynb notebook)_. We found that stores of the same type displayed similar trends and dimensions. Based on this, we filled missing values using the average for the corresponding store type and date. When no data was available for any store in a given group, we used 0 as the default value.
 
@@ -102,7 +102,7 @@ In this notebook, we conduct data exploration to better understand the dataset. 
 
 As mentioned earlier, the dataset is large and needs to be segmented for focused analysis. A dashboard was developed to facilitate this, providing various analysis elements for individual departments. While not definitive for drawing conclusions, it helps to understand department behavior and serves as a starting point for hypothesis generation.
 
-![](/images/dashboard_example28.png)
+![](https://guitrena.github.io/portfolio.github.io/images/dashboard_example28.png)
 
 The dashboard consists of four sections:
  - **Department Selection:** Allows users to select a department through a dropdown menu and display its information using a button.
@@ -134,23 +134,23 @@ It is important to note that the dataset is anonymized, making it more difficult
 
 #### Department 28
 
-![](/images/dashboard_example28.png)
+![](https://guitrena.github.io/portfolio.github.io/images/dashboard_example28.png)
 
 In the dashboard, we see that sales in this department are correlated with temperature, CPI, unemployment, and fuel prices. However, this correlation does not necessarily imply causality.
 
 > To further investigate the relationship between temperature and sales, we plotted the two variables over time.
 >
-> ![](/images/temperature_sales28.png)
+> ![](https://guitrena.github.io/portfolio.github.io/images/temperature_sales28.png)
 >
 > Based on the graph, it seems reasonable to conclude that lower temperatures may drive higher sales in this department. However, further context is needed to confirm this hypothesis.
 
 > For the other correlated features, the regression plots are less clear compared to the temperature plot. To dig deeper, we plotted the evolution of these features over time.
 >
->![](/images/economic_indicators.png)
+>![](https://guitrena.github.io/portfolio.github.io/images/economic_indicators.png)
 >
 > The trends for CPI, fuel prices, and unemployment are evident: CPI and fuel prices are rising, while unemployment is decreasing. Department 28’s sales also exhibit a decreasing trend, dropping by around 14%. This explains the correlation between sales and these features. <br>
 >
->![](/images/trend28.png)
+>![](https://guitrena.github.io/portfolio.github.io/images/trend28.png)
 >
 >  However, we cannot definitively conclude causality because of the lack of contextual information. For instance, the second winter period had warmer temperatures, which could explain the decrease in sales.
 
@@ -161,25 +161,25 @@ In the dashboard, we see that sales in this department are correlated with tempe
 
 #### Department 22
 
-![](/images/dashboard_example22.png)
+![](https://guitrena.github.io/portfolio.github.io/images/dashboard_example22.png)
 
 The dashboard indicates correlations between sales in this department and all the key variables. However, correlation does not necessarily imply causality.
 
 > To further investigate the relationship between temperature and sales, we plotted both variables over time.
 >
->![](/images/temperature_sales22.png)
+>![](https://guitrena.github.io/portfolio.github.io/images/temperature_sales22.png)
 >
 > The graph suggests that temperature does not significantly affect sales, which remain stable except for two peaks. We will explore these peaks below.
 
 > To investigate the relationship between holidays periods and sales we plotted them.
 >
->![](/images/holidays_sales22.png)
+>![](https://guitrena.github.io/portfolio.github.io/images/holidays_sales22.png)
 >
 > The two peaks align precisely with Thanksgiving and Christmas. As shown in the dashboard’s seasonal plot, sales during these weeks are almost 100% higher than usual.
 
 > For the remaining features (CPI, Unemployment, Fuel Price), the relationship is similar to Department 28. CPI and fuel prices trend upward, unemployment trends downward, and sales in Department 22 show a decreasing trend (8.7%).
 >
->![](/images/trend22.png)
+>![](https://guitrena.github.io/portfolio.github.io/images/trend22.png)
 >
 > However, without additional context, we cannot assert causality.
 
@@ -208,7 +208,7 @@ Finally, we plotted the historical data alongside the forecast to analyze the re
 Additionally, we decided to limit this strategy to a reduced number of models. Specifically, we chose to train models only for **Departments 22 and 28, and Store 1**, which reduced the number of cases from 3,211 to 160. This decision was due to computational constraints. For example, the batch selected took nearly 6 hours to process. By estimating the time required to train the entire dataset, it would have taken approximately 120 hours.
 
 Below is a diagram summarizing the entire process:
-![](/images/process_diagram.png)
+![](https://guitrena.github.io/portfolio.github.io/images/process_diagram.png)
 
 ### Results
 
@@ -228,7 +228,7 @@ After that, we plot and analyze the best and worst cases within each group, corr
 > - More than 70% of combinations have correlated features.
 > - External variables are relevant in only 32% of the cases.
 >
->![](/images/summary22.png)
+>![](https://guitrena.github.io/portfolio.github.io/images/summary22.png)
 
 > **Best prediction:** Store 23 with a 12.13% error.
 >
@@ -238,7 +238,7 @@ After that, we plot and analyze the best and worst cases within each group, corr
 > - The Christmas peak is not as poorly predicted as it seems. The week before Christmas is overestimated by 5,954, and Christmas week is underestimated by 6,784. If these two weeks are aggregated into a "Christmas period," the underestimation is just 838 for the whole period.
 > - As for the second period (August), we lack context to explain the peak. Without knowing what the department represents and where the store is located, it is difficult to understand the underestimation fully.
 >
->![](/images/best22.png)
+>![](https://guitrena.github.io/portfolio.github.io/images/best22.png)
 
 
 > **Worst prediction:** Store 39 with a 47.62% error.
@@ -249,11 +249,11 @@ After that, we plot and analyze the best and worst cases within each group, corr
 > - After correcting the model, by adjusting the AUTO ARIMA range (specifically, modifying the "D" value, which was preset to 1), the error was reduced from 47.62% to 15.06%. This correction also brought down the average error from 20.21% to 19.33%.
 > - Other cases may have similar issues.
 >
->![](/images/worst22.png)
+>![](https://guitrena.github.io/portfolio.github.io/images/worst22.png)
 >
 > After the correction, the model changed from ARIMA(1,0,1)(1,1,0)[52] to ARIMA(1,1,2)(1,0,0)[52].
 >
->![](/images/worst22_corrected.png)
+>![](https://guitrena.github.io/portfolio.github.io/images/worst22_corrected.png)
 
 
 #### Department 28
@@ -261,7 +261,7 @@ After that, we plot and analyze the best and worst cases within each group, corr
 > - The worst case shows an extremely high error percentage (119.76%).
 > - 95% of combinations show correlated features, but only 23% of cases performed better with the SARIMAX model.
 >
->![](/images/summary28.png)
+>![](https://guitrena.github.io/portfolio.github.io/images/summary28.png)
 
 
 >**Best prediction:** Store 23 with a 12.13% error.
@@ -270,7 +270,7 @@ After that, we plot and analyze the best and worst cases within each group, corr
 > - The best model is **SARIMA** (SARIMAX also trained).
 > - SARIMA generally tends to overestimate sales, while SARIMAX usually underestimates, a combination of both may be better.
 >
->![](/images/best28.png)
+>![](https://guitrena.github.io/portfolio.github.io/images/best28.png)
 
 > **Worst prediction:** Store 39 with a 119.76% error.
 >
@@ -278,7 +278,7 @@ After that, we plot and analyze the best and worst cases within each group, corr
 > - The model used is **SARIMA.**
 > - The high error percentage is driven by an extreme peak in sales during the last week of May. This peak occurred in 2011 but was not present in 2010 or 2009. We lack contextual information about the department and location to explain the sudden spike in 2011.
 >
->![](/images/worst28.png)
+>![](https://guitrena.github.io/portfolio.github.io/images/worst28.png)
 
 #### Store 1
 
@@ -287,7 +287,7 @@ After that, we plot and analyze the best and worst cases within each group, corr
 > - The best case, however, shows a very strong result with an error of only 4.12%.
 > - 70% of combinations show correlated features, but only 29% of the cases perform better with the SARIMAX model.
 >
->![](/images/summary1.png)
+>![](https://guitrena.github.io/portfolio.github.io/images/summary1.png)
 
 
 >**Best prediction:** Department 95 with a 4.12% error.
@@ -296,7 +296,7 @@ After that, we plot and analyze the best and worst cases within each group, corr
 > - The best model is **SARIMAX** (SARIMA also trained).
 > - The prediction is quite accurate.
 >
->![](/images/best1.png)
+>![](https://guitrena.github.io/portfolio.github.io/images/best1.png)
 
 >**Worst prediction:** Department 59 with a 175.1% error.
 >
@@ -306,7 +306,7 @@ After that, we plot and analyze the best and worst cases within each group, corr
 > - Without more context, it's difficult to explain the large variation between the two years.
 > - Although SARIMA had a better RMSE, the SARIMAX model performed better when excluding the peak.
 >
->![](/images/worst1.png)
+>![](https://guitrena.github.io/portfolio.github.io/images/worst1.png)
 
 ## 4. Next steps
 - Train additional models (e.g., regression models) and apply bagging techniques.
