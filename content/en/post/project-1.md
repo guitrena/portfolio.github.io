@@ -34,7 +34,7 @@ summary: "Analysis of the rental market in Valencia, Spain, with the development
 >
 >Additionally, **a model was trained to estimate rental prices**, providing a preliminary estimation based on the real estate environment in Valencia. If you're considering investing in a property to rent out, you can also use this model to compare potential purchase prices with estimated rental income.
 >
->![prediction example](/images/prediction_example.gif)
+>![prediction example](https://guitrena.github.io/portfolio.github.io/images/prediction_example.gif)
 
 > Before diving into the details, it’s important to note that data on this subject is highly valuable, which is why major rental websites protect it carefully. As a result, **the data used in this project is not as complete as we would like.** For instance, not every district in Valencia has sufficient information to be reliable. The model trained only includes the districts marked in green on the following map, while other areas are aggregated, making them less precise.
 >
