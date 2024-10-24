@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data Science Portfolio on Guillermo Trenor</title>
+    <link>/</link>
+    <description>Recent content in Data Science Portfolio on Guillermo Trenor</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 22 Oct 2024 11:00:59 -0400</lastBuildDate>
+    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Project 2: Walmart Sales</title>
+      <link>/post/project-2/</link>
+      <pubDate>Tue, 22 Oct 2024 11:00:59 -0400</pubDate>
+      <guid>/post/project-2/</guid>
+      <description>&lt;p&gt;Analysis of Walmart sales data from 45 stores across the U.S., aiming to forecast weekly sales for different store-department combinations and investigate the key factors influencing sales trends.&lt;/p&gt;&#xA;&lt;h4 id=&#34;technical-key-points&#34;&gt;Technical key points&lt;/h4&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Data merging and cleaning:&lt;/strong&gt; Combining four datasets, handling missing values in markdown features by averaging values across same store types.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Statistical analysis:&lt;/strong&gt; Conducting ANOVA and Pearson correlation tests to analyze sales&amp;rsquo; relationship with various features (Temperature, CPI, Unemployment, etc.).&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Dashboard creation:&lt;/strong&gt; Developing an interactive dashboard to visualize sales trends, seasonal patterns, and correlations for specific departments.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Time series modeling:&lt;/strong&gt; Training SARIMA and SARIMAX models for weekly sales forecasting, selecting external variables based on correlation significance, and using AUTO ARIMA for optimization.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Model evaluation:&lt;/strong&gt; Analyzing best and worst performing models and improving model accuracy through parameter adjustments.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h4 id=&#34;economic-insights&#34;&gt;Economic insights&lt;/h4&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Holiday effect on sales:&lt;/strong&gt; Significant sales peaks during holidays, with holiday periods driving nearly 300% higher sales in certain departments for the cases studied.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Seasonal trends:&lt;/strong&gt; Departments such as 28 show a strong correlation between sales and temperature, with lower temperatures driving higher sales.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Sales decline trends:&lt;/strong&gt; Certain departments show a declining sales trend (e.g., Department 28 with a 14% drop), potentially linked to economic indicators like CPI and unemployment.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Department-specific insights:&lt;/strong&gt; Department sales dynamics vary widely, with some experiencing unpredictable peaks that can&amp;rsquo;t be explained without more context.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Model performance:&lt;/strong&gt; External variables improve forecasts in some cases, but not all, indicating the complexity of sales patterns across different stores and departments.&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Project 1: Rental Market in Valencia, Spain</title>
+      <link>/post/project-1/</link>
+      <pubDate>Wed, 09 Oct 2024 10:58:08 -0400</pubDate>
+      <guid>/post/project-1/</guid>
+      <description>&lt;p&gt;Analysis of the rental market in Valencia, Spain, with the development of a model to estimate house rental prices based on key property characteristics.&lt;/p&gt;&#xA;&lt;h4 id=&#34;technical-key-points&#34;&gt;Technical key points&lt;/h4&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Web scraping:&lt;/strong&gt; Extracting highly secured data from property listings using Selenium and BeautifulSoup.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Handling Missing Data:&lt;/strong&gt; Filling missing values by creating relevant ratios based on available data.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Modeling Approaches:&lt;/strong&gt; Training multiple regression models to predict rental prices.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Data Enrichment and Optimization:&lt;/strong&gt; Dropping extreme values and enriching the dataset with additional features through new rounds of web scraping.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h4 id=&#34;economic-insights&#34;&gt;Economic insights&lt;/h4&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;District Pricing:&lt;/strong&gt; Central districts are more expensive compared to others.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Market Opportunities:&lt;/strong&gt; Some districts near the city center may present opportunities due to their relatively lower rental prices.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Price per Square Meter:&lt;/strong&gt; Smaller homes tend to have a higher price per square meter, with many located in the city center.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;One-Room Rentals:&lt;/strong&gt; One-room houses are typically very small and have higher per-square-meter prices.&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>About me</title>
+      <link>/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/about/</guid>
+      <description>&lt;figure&gt;&lt;img src=&#34;/images/foto_perfil_bw.png&#34;&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;&amp;ldquo;It is never too late to be what you might have been.&amp;rdquo; — George Eliot&lt;/p&gt;&#xA;&lt;p&gt;My name is Guillermo Trenor, and I am a data scientist specializing in Python. After completing my studies in Industrial Engineering, where I developed a strong foundation in mathematics, I began working as a continuous improvement engineer in production environments. Although I achieved the goals set in my roles, I felt that I wasn’t fully tapping into my potential. The stagnation in the development of my professional skills consumed me.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Contact</title>
+      <link>/contact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/contact/</guid>
+      <description>&lt;p&gt;Contact via email&lt;/p&gt;&#xA;&#xA;&#xA;&#xA;&lt;form class=&#34;black-80 sans-serif&#34; accept-charset=&#34;UTF-8&#34; action=&#34;https://formspree.io/f/mdkokwnb&#34; method=&#34;POST&#34; role=&#34;form&#34;&gt;&#xA;&#xA;    &lt;label class=&#34;f6 b db mb1 mt3 sans-serif mid-gray&#34;  for=&#34;name&#34;&gt;Your Name&lt;/label&gt;&#xA;    &lt;input type=&#34;text&#34; id=&#34;name&#34; name=&#34;name&#34; class=&#34;w-100 f5 pv3 ph3 bg-light-gray bn&#34;  required placeholder=&#34; &#34;  aria-labelledby=&#34;name&#34;/&gt;&#xA;&#xA;    &lt;label class=&#34;f6 b db mb1 mt3 sans-serif mid-gray&#34; for=&#34;email&#34;&gt;Email Address&lt;/label&gt;&#xA;    &lt;input type=&#34;email&#34; id=&#34;email&#34; name=&#34;email&#34; class=&#34;w-100 f5 pv3 ph3 bg-light-gray bn&#34;  required placeholder=&#34; &#34;  aria-labelledby=&#34;email&#34;/&gt;&#xA;    &lt;div class=&#34;requirements f6 gray glow i ph3 overflow-hidden&#34;&gt;&#xA;      An email address is required.&#xA;    &lt;/div&gt;&#xA;&#xA;    &lt;label class=&#34;f6 b db mb1 mt3 sans-serif mid-gray&#34; for=&#34;message&#34;&gt;Message&lt;/label&gt;&#xA;    &lt;textarea id=&#34;message&#34; name=&#34;message&#34; class=&#34;w-100 f5 pv3 ph3 bg-light-gray bn h4&#34; aria-labelledby=&#34;message&#34;&gt;&lt;/textarea&gt;&#xA;&#xA;    &lt;input class=&#34;db w-100 mv2 white pa3 bn hover-shadow hover-bg-black bg-animate bg-black&#34; type=&#34;submit&#34; value=&#34;Send&#34; /&gt;&#xA;&#xA;&lt;/form&gt;</description>
+    </item>
+  </channel>
+</rss>

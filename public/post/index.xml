@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projects on Guillermo Trenor</title>
+    <link>/post/</link>
+    <description>Recent content in Projects on Guillermo Trenor</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 22 Oct 2024 11:00:59 -0400</lastBuildDate>
+    <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Project 2: Walmart Sales</title>
+      <link>/post/project-2/</link>
+      <pubDate>Tue, 22 Oct 2024 11:00:59 -0400</pubDate>
+      <guid>/post/project-2/</guid>
+      <description>&lt;p&gt;Analysis of Walmart sales data from 45 stores across the U.S., aiming to forecast weekly sales for different store-department combinations and investigate the key factors influencing sales trends.&lt;/p&gt;&#xA;&lt;h4 id=&#34;technical-key-points&#34;&gt;Technical key points&lt;/h4&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Data merging and cleaning:&lt;/strong&gt; Combining four datasets, handling missing values in markdown features by averaging values across same store types.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Statistical analysis:&lt;/strong&gt; Conducting ANOVA and Pearson correlation tests to analyze sales&amp;rsquo; relationship with various features (Temperature, CPI, Unemployment, etc.).&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Dashboard creation:&lt;/strong&gt; Developing an interactive dashboard to visualize sales trends, seasonal patterns, and correlations for specific departments.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Time series modeling:&lt;/strong&gt; Training SARIMA and SARIMAX models for weekly sales forecasting, selecting external variables based on correlation significance, and using AUTO ARIMA for optimization.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Model evaluation:&lt;/strong&gt; Analyzing best and worst performing models and improving model accuracy through parameter adjustments.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h4 id=&#34;economic-insights&#34;&gt;Economic insights&lt;/h4&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Holiday effect on sales:&lt;/strong&gt; Significant sales peaks during holidays, with holiday periods driving nearly 300% higher sales in certain departments for the cases studied.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Seasonal trends:&lt;/strong&gt; Departments such as 28 show a strong correlation between sales and temperature, with lower temperatures driving higher sales.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Sales decline trends:&lt;/strong&gt; Certain departments show a declining sales trend (e.g., Department 28 with a 14% drop), potentially linked to economic indicators like CPI and unemployment.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Department-specific insights:&lt;/strong&gt; Department sales dynamics vary widely, with some experiencing unpredictable peaks that can&amp;rsquo;t be explained without more context.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Model performance:&lt;/strong&gt; External variables improve forecasts in some cases, but not all, indicating the complexity of sales patterns across different stores and departments.&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Project 1: Rental Market in Valencia, Spain</title>
+      <link>/post/project-1/</link>
+      <pubDate>Wed, 09 Oct 2024 10:58:08 -0400</pubDate>
+      <guid>/post/project-1/</guid>
+      <description>&lt;p&gt;Analysis of the rental market in Valencia, Spain, with the development of a model to estimate house rental prices based on key property characteristics.&lt;/p&gt;&#xA;&lt;h4 id=&#34;technical-key-points&#34;&gt;Technical key points&lt;/h4&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Web scraping:&lt;/strong&gt; Extracting highly secured data from property listings using Selenium and BeautifulSoup.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Handling Missing Data:&lt;/strong&gt; Filling missing values by creating relevant ratios based on available data.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Modeling Approaches:&lt;/strong&gt; Training multiple regression models to predict rental prices.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Data Enrichment and Optimization:&lt;/strong&gt; Dropping extreme values and enriching the dataset with additional features through new rounds of web scraping.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h4 id=&#34;economic-insights&#34;&gt;Economic insights&lt;/h4&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;District Pricing:&lt;/strong&gt; Central districts are more expensive compared to others.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Market Opportunities:&lt;/strong&gt; Some districts near the city center may present opportunities due to their relatively lower rental prices.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Price per Square Meter:&lt;/strong&gt; Smaller homes tend to have a higher price per square meter, with many located in the city center.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;One-Room Rentals:&lt;/strong&gt; One-room houses are typically very small and have higher per-square-meter prices.&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

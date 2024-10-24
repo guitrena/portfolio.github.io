@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Project 1: Rental Market in Valencia, Spain | Guillermo Trenor</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Analysis of the rental market in Valencia, Spain, with the development of a model to estimate house rental prices based on key property characteristics.
+Technical key points
+
+Web scraping: Extracting highly secured data from property listings using Selenium and BeautifulSoup.
+Handling Missing Data: Filling missing values by creating relevant ratios based on available data.
+Modeling Approaches: Training multiple regression models to predict rental prices.
+Data Enrichment and Optimization: Dropping extreme values and enriching the dataset with additional features through new rounds of web scraping.
+
+Economic insights
+
+District Pricing: Central districts are more expensive compared to others.
+Market Opportunities: Some districts near the city center may present opportunities due to their relatively lower rental prices.
+Price per Square Meter: Smaller homes tend to have a higher price per square meter, with many located in the city center.
+One-Room Rentals: One-room houses are typically very small and have higher per-square-meter prices.
+">
+    <meta name="generator" content="Hugo 0.136.4">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/chapter-1/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/chapter-1/">
+  <meta property="og:site_name" content="Guillermo Trenor">
+  <meta property="og:title" content="Project 1: Rental Market in Valencia, Spain">
+  <meta property="og:description" content="Analysis of the rental market in Valencia, Spain, with the development of a model to estimate house rental prices based on key property characteristics.
+Technical key points Web scraping: Extracting highly secured data from property listings using Selenium and BeautifulSoup. Handling Missing Data: Filling missing values by creating relevant ratios based on available data. Modeling Approaches: Training multiple regression models to predict rental prices. Data Enrichment and Optimization: Dropping extreme values and enriching the dataset with additional features through new rounds of web scraping. Economic insights District Pricing: Central districts are more expensive compared to others. Market Opportunities: Some districts near the city center may present opportunities due to their relatively lower rental prices. Price per Square Meter: Smaller homes tend to have a higher price per square meter, with many located in the city center. One-Room Rentals: One-room houses are typically very small and have higher per-square-meter prices.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2024-10-09T10:58:08-04:00">
+    <meta property="article:modified_time" content="2024-10-09T10:58:08-04:00">
+
+  <meta itemprop="name" content="Project 1: Rental Market in Valencia, Spain">
+  <meta itemprop="description" content="Analysis of the rental market in Valencia, Spain, with the development of a model to estimate house rental prices based on key property characteristics.
+Technical key points Web scraping: Extracting highly secured data from property listings using Selenium and BeautifulSoup. Handling Missing Data: Filling missing values by creating relevant ratios based on available data. Modeling Approaches: Training multiple regression models to predict rental prices. Data Enrichment and Optimization: Dropping extreme values and enriching the dataset with additional features through new rounds of web scraping. Economic insights District Pricing: Central districts are more expensive compared to others. Market Opportunities: Some districts near the city center may present opportunities due to their relatively lower rental prices. Price per Square Meter: Smaller homes tend to have a higher price per square meter, with many located in the city center. One-Room Rentals: One-room houses are typically very small and have higher per-square-meter prices.">
+  <meta itemprop="datePublished" content="2024-10-09T10:58:08-04:00">
+  <meta itemprop="dateModified" content="2024-10-09T10:58:08-04:00">
+  <meta itemprop="wordCount" content="1656">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Project 1: Rental Market in Valencia, Spain">
+  <meta name="twitter:description" content="Analysis of the rental market in Valencia, Spain, with the development of a model to estimate house rental prices based on key property characteristics.
+Technical key points Web scraping: Extracting highly secured data from property listings using Selenium and BeautifulSoup. Handling Missing Data: Filling missing values by creating relevant ratios based on available data. Modeling Approaches: Training multiple regression models to predict rental prices. Data Enrichment and Optimization: Dropping extreme values and enriching the dataset with additional features through new rounds of web scraping. Economic insights District Pricing: Central districts are more expensive compared to others. Market Opportunities: Some districts near the city center may present opportunities due to their relatively lower rental prices. Price per Square Meter: Smaller homes tend to have a higher price per square meter, with many located in the city center. One-Room Rentals: One-room houses are typically very small and have higher per-square-meter prices.">
+
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('http://localhost:1313/images/torres_serrano.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        Guillermo Trenor
+      
+    </a>
+    <div class="flex-l items-center">
+      
+<h4></h4>
+<ul class="pl0 mr3">
+    
+    <li class="list f5 f4-ns fw4 dib pr3">
+        <a class="hover-white no-underline white-90" href="/es/post/chapter-1/">es</a>
+    </li>
+    
+</ul>
+
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/about/" title="About page">
+              About
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/contact/" title="Contact page">
+              Contact
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/post/" title="Projects page">
+              Projects
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"><a href="http://linkedin.com/in/guillermo-trenor-navarro-2a18672ab" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a><a href="https://github.com/guitrena/" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition github link dib z-999 pt3 pt0-l mr1"
+        title="follow on GitHub - Opens in a new window"
+        aria-label="follow on GitHub - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+            
+          </span></a></div>
+
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">Project 1: Rental Market in Valencia, Spain</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+
+
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Projects
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+
+
+<h1 class="f1 athelas mt3 mb1">Project 1: Rental Market in Valencia, Spain</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2024-10-09T10:58:08-04:00">October 9, 2024</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100"><h2 id="0-introduction">0. Introduction</h2>
+<hr>
+<blockquote>
+<p>This project presents an <strong>analysis of the rental market in Valencia</strong> to identify the key characteristics of the houses offered. This can help optimize strategies for renting or investing in real estate. It may also assist individuals searching for a new home in Valencia to better understand the market dynamics in one of Spain&rsquo;s trendiest cities.</p>
+<p>Additionally, <strong>a model was trained to estimate rental prices</strong>, providing a preliminary estimation based on the real estate environment in Valencia. If you&rsquo;re considering investing in a property to rent out, you can also use this model to compare potential purchase prices with estimated rental income.</p>
+<p><img alt="prediction example" src="/images/prediction_example.gif"></p>
+</blockquote>
+<blockquote>
+<p>Before diving into the details, it’s important to note that data on this subject is highly valuable, which is why major rental websites protect it carefully. As a result, <strong>the data used in this project is not as complete as we would like.</strong> For instance, not every district in Valencia has sufficient information to be reliable. The model trained only includes the districts marked in green on the following map, while other areas are aggregated, making them less precise.</p>
+<p><img alt="Data available map" src="/images/map_data_available.png"></p>
+</blockquote>
+<blockquote>
+<h3 id="price-distribution">Price distribution</h3>
+<p><img alt="Price boxplot" src="/images/price_distribution.png"></p>
+</blockquote>
+<h3 id="technical-key-points">Technical key points</h3>
+<hr>
+<ul>
+<li>Webscrapping highly secured data</li>
+<li>Filling missing values using ratios</li>
+<li>Modelling optimization: dropping extreme values and enriching dataset with new feature (new webscrapping)</li>
+<li>Next steps: propose future lines of work</li>
+</ul>
+<h3 id="economic-insights">Economic insights</h3>
+<hr>
+<ul>
+<li>Districts in the city center are more expensive</li>
+<li>Some districts near the center may represent market opportunities due to their relatively lower prices</li>
+<li>Smaller houses have a higher price per square meter, most of them are located in the city center</li>
+<li>Houses with just one room are very small and, therefore, have a higher price per square meter</li>
+</ul>
+<h2 id="1-data">1. Data</h2>
+<hr>
+<h3 id="11--webscrapping">1.1.  Webscrapping</h3>
+<p>As mentioned earlier, data on this topic is difficult to obtain. Major rental companies invest heavily in preventing others from scraping their websites. After failing to bypass the top companies&rsquo; security measures, we managed to scrape data from a second-tier website with fewer observations.</p>
+<p>The tools used for data retrieval were:</p>
+<blockquote>
+<p><strong>Selenium: to open and scroll through pages, avoiding lazy loading and retrieving the HTML file.</strong></p>
+<p><strong>Beatiful Soup: to extract the necessary information.</strong></p>
+</blockquote>
+<p><strong>The web scraping code and datasets are not shared for legal reasons.</strong></p>
+<h3 id="12-data-restructuring">1.2. Data restructuring</h3>
+<p>This section introduces the <em><strong>Data_restructuring.ipynb</strong></em> file, which is designed to help stakeholders better understand the information retrieved from the website without sharing the scraping code or datasets.</p>
+<h3 id="13-nan-values-filling">1.3 Nan values filling</h3>
+<p>It&rsquo;s common when working with data to encounter incomplete features, and this case is no exception. Various strategies were used to fill the missing values, which are detailed in the <em><strong>Data_exploration.ipynb</strong></em> file. Some of the more interesting methods are worth highlighting.</p>
+<p>At first glance, features like the number of rooms and surface area are very important, so a simple imputer may not work well. More creative approaches were needed, such as calculating ratios to estimate missing values.</p>
+<blockquote>
+<p>For instance, to fill in missing surface area values, we used observations where data was complete to calculate a <strong>ratio between the surface area and different parts of the house. These spaces were weighted</strong> based on their size relative to a room. The equation below defines this constant:</p>
+<p>$$Ratio = \frac{1}{n} \times \sum_{k=1}^n  \frac{Surface_k [m^2]}{1 \times Rooms_k + 0,5 \times Bathrooms_k + 0,75 \times Terrace_k + 0,25 \times Balcony_k} $$</p>
+<p>After calculating this ratio, for listings where the number of rooms was known but the surface area was missing, we estimated it by multiplying their weighted values by the ratio.</p>
+<p>$$Surface Estimation_k = Ratio \times (Rooms_k + 0,5 \times Bathrooms_k + 0,75 \times Terrace_k + 0,25 \times Balcony_k)$$</p>
+</blockquote>
+<h3 id="14-final-features--number-of-observations">1.4. Final features + number of observations</h3>
+<p><strong>Number of observations: 711</strong></p>
+<p><strong>Features</strong></p>
+<ul>
+<li><strong>House_type:</strong> Type of the house written in the offer.</li>
+<li><strong>Location:</strong> District of the city where the house is located.</li>
+<li><strong>Furnished:</strong> Whether the house is furnished or not.</li>
+<li><strong>Elevator:</strong> Whether the house has an elevator or not.</li>
+<li><strong>Terrace:</strong> Whether the house has a terrace or not.</li>
+<li><strong>Balcony:</strong> Whether the house has a balcony or not.</li>
+<li><strong>Storage:</strong> Whether the house has a storage or not.</li>
+<li><strong>Rooms:</strong> Nº of rooms.</li>
+<li><strong>Bathrooms:</strong> Nº of bathrooms.</li>
+<li><strong>Surface:</strong> Square meters of the house.</li>
+<li><strong>Agent_cat:</strong> Type of real estate agent managing the offer (added during model optimization, can also indicate Premium/Non-premium house).</li>
+<li><strong>Price:</strong> Target variable (rent).</li>
+</ul>
+<h2 id="2-analysis">2. Analysis</h2>
+<hr>
+<p>A complete analysis of the dataset&rsquo;s characteristics is available in the <em><strong>Data_exploration.ipynb</strong></em> file. Here, we present the most relevant insights.</p>
+<h3 id="21-price-per-square-meter-by-location">2.1. Price per square meter by Location</h3>
+<p>One of the most common metrics for understanding the real estate market is the price per square meter. This variable was calculated, and the graph below shows the districts with the highest and lowest prices. Though simple, this metric is crucial for grasping the city&rsquo;s real estate dynamics.
+<img alt="Top 5 and bottom 5 prices per square meter" src="/images/highest_lowest_prices.png"> <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>The map below illustrates the price per square meter for each district, showing a clear pattern: <strong>districts in the city center are more expensive</strong> than those farther away. Additionally, <strong>some districts near the center may represent market opportunities</strong> due to their relatively lower prices.
+<img alt="Price map" src="/images/map_price.png"></p>
+<h3 id="22-price-per-square-meter-by-nº-of-rooms">2.2. Price per square meter by nº of rooms</h3>
+<p>Typically, one might expect that the more rooms a house has, the more expensive it is. However, if we examine the price per square meter, the opposite is true. As shown in the boxplots below, houses with fewer rooms tend to have a higher price per square meter. Two hypotheses were formulated to explore this behavior:</p>
+<blockquote>
+<p><strong><!-- raw HTML omitted -->Hypothesis 1:<!-- raw HTML omitted --> One-room houses are small, so they have a higher €/m² due to a minimum price threshold.</strong> <!-- raw HTML omitted --></p>
+<p><strong><!-- raw HTML omitted -->Hypothesis 2:<!-- raw HTML omitted --> Houses with more rooms are located in lower €/m² zones.</strong></p>
+</blockquote>
+<p><img alt="Price per square meter boxplots by rooms" src="/images/price_distribution_rooms.png"></p>
+<h4 id="221-size-by-rooms">2.2.1. Size by rooms</h4>
+<p>To check the first hypothesis, the average surface area for each room count was plotted. <strong>Houses with just one room average 50 m², and the largest increase in surface area (66%) occurs between one- and two-room houses.</strong> We can conclude that one-room houses are significantly smaller.</p>
+<p><img alt="Average surface by rooms" src="/images/average_surface_rooms.png"></p>
+<h4 id="222-nº-of-rooms-by-location">2.2.2. Nº of rooms by location</h4>
+<p>To verify the second hypothesis, locations were categorized by price per square meter in four ranges: [&rsquo;&lt;16 €/m²&rsquo;, &lsquo;16-19 €/m²&rsquo;, &lsquo;19-22 €/m²&rsquo;, &lsquo;&gt;22 €/m²&rsquo;]. <strong>The higher the price per square meter, the fewer rooms houses</strong> in that area tend to have. A map further illustrates that <strong>the highest prices per square meter are found in the city center, where smaller houses are more common.</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">'</th>
+          <th style="text-align: center">'</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><img alt="Price map by range" src="/images/map_price_range.png"></td>
+          <td style="text-align: center"><img alt="Price map by range" src="/images/average_n_rooms.png"></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="3-modelling">3. Modelling</h2>
+<hr>
+<p>In this section, the process of training a model to estimate house prices based on their features is explained. <strong>The goal was to achieve an RMSE below 300</strong>, which is reasonable given the small dataset. For more details, see the <em><strong>Modelling.ipynb</strong></em> file.</p>
+<h3 id="31-first-results">3.1. First results</h3>
+<p>After preprocessing the data, several regression models were trained. While various metrics were calculated, the chosen metric for comparison was Root Mean Square Error (RMSE), as it has the same dimension as the target (price).</p>
+<p><strong>Results</strong> (Most notable models):</p>
+<ul>
+<li>LinearRegression: <em>Decent performance in test (RMSE=499) despite its simplicity</em></li>
+<li>RandomForestRegresor: <em>Noteworthy performance in test (RMSE=460 // Best) and massive difference with training (RMSE=235) due to overfitting what might make it optimizable using specific hyperparameters</em></li>
+<li>GradientBoostingRegressor: <em>Best perfomance in test <strong>(RMSE=460)</strong></em></li>
+</ul>
+<p><img alt="First models results" src="/images/First_models_results.png"></p>
+<h3 id="32-optimization">3.2. Optimization</h3>
+<p>After the initial results, an optimization process was undertaken to achieve the target RMSE (&lt;300).</p>
+<h4 id="321-dropping-extreme-values">3.2.1. Dropping extreme values</h4>
+<blockquote>
+<p>To understand model performance, the differences between the Random Forest model predictions and actual values were analyzed. The highest differences were for highly underestimated listings.</p>
+<p><img alt="Histogram extreme values" src="/images/histogram_extreme_values.png"></p>
+</blockquote>
+<blockquote>
+<p>A scatter plot comparing predictions with real values shows that <strong>extreme values (over €2925) are consistently underestimated</strong> and represent most of the largest errors. In the graph below, we can see also three lines that mark the perfect estimation and the range of +/- 300 (RMSE objective).</p>
+<p><img alt="Pred vs Real" src="/images/predvsreal_extreme_values.png"></p>
+<p><strong>The approach was to drop many of these extreme values</strong> to reduce the artificial error and avoid overestimations in other observations.  Not all extreme values were removed to prevent, on one hand, excessive data loss, and on another one, underestimations in offers around the threshold.</p>
+<p>This optimization step resulted in a <strong>reduction in the RMSE from 460 to 358 in the Gradient Boosting model.</strong></p>
+</blockquote>
+<h4 id="322-enriching-the-dataset-with-new-feature">3.2.2. Enriching the dataset with new feature</h4>
+<p>While analyzing the most underestimated offers in the website scraped, we identified a potential new feature.  Many of these offers were listed by the same real estate agent: Engel &amp; Völkers. These properties also appeared to be more aesthetically appealing and comfortable. This information was not collected during the initial web scraping, so a <strong>new web scraping process</strong> was conducted to retrieve the agent names associated with each offer.</p>
+<p>To assess the impact of the agent on rental prices, we plotted a histogram showing the distribution of price per square meter for different agents. The results revealed a clear distinction, with a gap around 23 €/m², which led to the creation of a <strong>new binary feature, &lsquo;Agent_cat&rsquo;, which can be interpreted as distinguishing between premium and non-premium properties.</strong></p>
+<p><img alt="Histogram agents" src="/images/histogram_agents.png"></p>
+<p>By incorporating this new feature into the model, we achieved an improvement in performance. For example, the <strong>Gradient Boosting model reached a test RMSE of 305.</strong></p>
+<h4 id="323-searching-best-hyperparameters">3.2.3. Searching best hyperparameters</h4>
+<p>Following the introduction of the &lsquo;Agent_cat&rsquo; feature, the Random Forest model had an RMSE of 148 on the training set and 317 on the test set. This significant gap suggested overfitting, prompting an attempt to optimize the hyperparameters in order to improve the model&rsquo;s performance. However, the resulting test RMSE of 306 was not a substantial improvement, making it insufficient to outperform the Gradient Boosting model.</p>
+<p><img alt="Final models results" src="/images/Final_models_results.png"></p>
+<p><strong>Therefore, the final model selected for use is the Gradient Boosting regressor, which achieved a test RMSE of 305.</strong></p>
+<h2 id="4-next-steps">4. Next steps</h2>
+<p><strong>Several tasks remain uncompleted</strong> due to resource limitations, but it is important to outline them as they can significantly enhance the project in the future. The main tasks include:</p>
+<ul>
+<li>
+<p><strong>Acquiring more data to expand the dataset and introduce additional features.</strong></p>
+</li>
+<li>
+<p><strong>Conducting a similar analysis on the property buying market to compare results and identify investment opportunities.</strong></p>
+</li>
+<li>
+<p><strong>Periodically updating the dataset to monitor and analyze trends and gain insights into the dynamic behavior of the rental market.</strong></p>
+</li>
+</ul>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  Guillermo Trenor 2024 
+  </a>
+    <div><div class="ananke-socials"><a href="http://linkedin.com/in/guillermo-trenor-navarro-2a18672ab" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a><a href="https://github.com/guitrena/" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition github link dib z-999 pt3 pt0-l mr1"
+        title="follow on GitHub - Opens in a new window"
+        aria-label="follow on GitHub - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+            
+          </span></a></div>
+
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

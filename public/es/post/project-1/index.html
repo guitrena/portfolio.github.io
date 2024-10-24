@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Proyecto 1: Mercado de alquiler en Valencia, España | Guillermo Trenor</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Análisis del mercado de alquiler en Valencia, España, con el desarrollo de un modelo para estimar los precios de alquiler de viviendas en función de características clave de las propiedades.
+Puntos técnicos clave
+
+Web scraping: Extracción de datos protegidos de anuncios de propiedades utilizando Selenium y BeautifulSoup.
+Manejo de datos faltantes: Relleno de valores faltantes mediante la creación de ratios relevantes con los datos disponibles.
+Enfoques de modelado: Entrenamiento de múltiples modelos de regresión para predecir los precios de alquiler.
+Enriquecimiento de datos y optimización: Eliminación de valores extremos y enriquecimiento del conjunto de datos con características adicionales mediante nuevas rondas de web scraping.
+
+Perspectivas económicas
+
+Precios por barrios: Los barrios céntricos son más caros en comparación con otros.
+Oportunidades de mercado: Algunos distritos cercanos al centro pueden presentar oportunidades debido a sus precios de alquiler relativamente más bajos.
+Precio por metro cuadrado: Las viviendas más pequeñas tienden a tener un precio por metro cuadrado más alto, muchas de ellas ubicadas en el centro de la ciudad.
+Alquileres de una habitación: Las viviendas de una habitación son típicamente muy pequeñas y tienen precios por metro cuadrado más altos.
+">
+    <meta name="generator" content="Hugo 0.136.4">
+    
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.88b9752140ac8f6a7b3d156e04caf06413e4651761dfcf351d9e11e725aaabf2.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="/es/post/project-1/">
+    
+
+    <meta property="og:url" content="/es/post/project-1/">
+  <meta property="og:site_name" content="Guillermo Trenor">
+  <meta property="og:title" content="Proyecto 1: Mercado de alquiler en Valencia, España">
+  <meta property="og:description" content="Análisis del mercado de alquiler en Valencia, España, con el desarrollo de un modelo para estimar los precios de alquiler de viviendas en función de características clave de las propiedades.
+Puntos técnicos clave Web scraping: Extracción de datos protegidos de anuncios de propiedades utilizando Selenium y BeautifulSoup. Manejo de datos faltantes: Relleno de valores faltantes mediante la creación de ratios relevantes con los datos disponibles. Enfoques de modelado: Entrenamiento de múltiples modelos de regresión para predecir los precios de alquiler. Enriquecimiento de datos y optimización: Eliminación de valores extremos y enriquecimiento del conjunto de datos con características adicionales mediante nuevas rondas de web scraping. Perspectivas económicas Precios por barrios: Los barrios céntricos son más caros en comparación con otros. Oportunidades de mercado: Algunos distritos cercanos al centro pueden presentar oportunidades debido a sus precios de alquiler relativamente más bajos. Precio por metro cuadrado: Las viviendas más pequeñas tienden a tener un precio por metro cuadrado más alto, muchas de ellas ubicadas en el centro de la ciudad. Alquileres de una habitación: Las viviendas de una habitación son típicamente muy pequeñas y tienen precios por metro cuadrado más altos.">
+  <meta property="og:locale" content="es">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2024-10-09T10:58:08-04:00">
+    <meta property="article:modified_time" content="2024-10-09T10:58:08-04:00">
+
+  <meta itemprop="name" content="Proyecto 1: Mercado de alquiler en Valencia, España">
+  <meta itemprop="description" content="Análisis del mercado de alquiler en Valencia, España, con el desarrollo de un modelo para estimar los precios de alquiler de viviendas en función de características clave de las propiedades.
+Puntos técnicos clave Web scraping: Extracción de datos protegidos de anuncios de propiedades utilizando Selenium y BeautifulSoup. Manejo de datos faltantes: Relleno de valores faltantes mediante la creación de ratios relevantes con los datos disponibles. Enfoques de modelado: Entrenamiento de múltiples modelos de regresión para predecir los precios de alquiler. Enriquecimiento de datos y optimización: Eliminación de valores extremos y enriquecimiento del conjunto de datos con características adicionales mediante nuevas rondas de web scraping. Perspectivas económicas Precios por barrios: Los barrios céntricos son más caros en comparación con otros. Oportunidades de mercado: Algunos distritos cercanos al centro pueden presentar oportunidades debido a sus precios de alquiler relativamente más bajos. Precio por metro cuadrado: Las viviendas más pequeñas tienden a tener un precio por metro cuadrado más alto, muchas de ellas ubicadas en el centro de la ciudad. Alquileres de una habitación: Las viviendas de una habitación son típicamente muy pequeñas y tienen precios por metro cuadrado más altos.">
+  <meta itemprop="datePublished" content="2024-10-09T10:58:08-04:00">
+  <meta itemprop="dateModified" content="2024-10-09T10:58:08-04:00">
+  <meta itemprop="wordCount" content="1872">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Proyecto 1: Mercado de alquiler en Valencia, España">
+  <meta name="twitter:description" content="Análisis del mercado de alquiler en Valencia, España, con el desarrollo de un modelo para estimar los precios de alquiler de viviendas en función de características clave de las propiedades.
+Puntos técnicos clave Web scraping: Extracción de datos protegidos de anuncios de propiedades utilizando Selenium y BeautifulSoup. Manejo de datos faltantes: Relleno de valores faltantes mediante la creación de ratios relevantes con los datos disponibles. Enfoques de modelado: Entrenamiento de múltiples modelos de regresión para predecir los precios de alquiler. Enriquecimiento de datos y optimización: Eliminación de valores extremos y enriquecimiento del conjunto de datos con características adicionales mediante nuevas rondas de web scraping. Perspectivas económicas Precios por barrios: Los barrios céntricos son más caros en comparación con otros. Oportunidades de mercado: Algunos distritos cercanos al centro pueden presentar oportunidades debido a sus precios de alquiler relativamente más bajos. Precio por metro cuadrado: Las viviendas más pequeñas tienden a tener un precio por metro cuadrado más alto, muchas de ellas ubicadas en el centro de la ciudad. Alquileres de una habitación: Las viviendas de una habitación son típicamente muy pequeñas y tienen precios por metro cuadrado más altos.">
+
+      
+    
+	
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('/images/torres_serrano.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/es/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        Guillermo Trenor
+      
+    </a>
+    <div class="flex-l items-center">
+      
+<h4></h4>
+<ul class="pl0 mr3">
+    
+    <li class="list f5 f4-ns fw4 dib pr3">
+        <a class="hover-white no-underline white-90" href="/post/project-1/">en</a>
+    </li>
+    
+</ul>
+
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/es/about/" title="Acerca de mí pagina">
+              Acerca de mí
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/es/contact/" title="Contacto pagina">
+              Contacto
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/es/post/" title="Proyectos pagina">
+              Proyectos
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"><a href="http://linkedin.com/in/guillermo-trenor-navarro-2a18672ab" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a><a href="https://github.com/guitrena/" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition github link dib z-999 pt3 pt0-l mr1"
+        title="follow on GitHub - Opens in a new window"
+        aria-label="follow on GitHub - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+            
+          </span></a></div>
+
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">Proyecto 1: Mercado de alquiler en Valencia, España</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+
+
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Proyectos
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+
+
+<h1 class="f1 athelas mt3 mb1">Proyecto 1: Mercado de alquiler en Valencia, España</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2024-10-09T10:58:08-04:00">octubre 9, 2024</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100"><h2 id="0-introducción">0. Introducción</h2>
+<hr>
+<blockquote>
+<p>Este proyecto presenta un <strong>análisis del mercado de alquiler en Valencia</strong> para identificar las características clave de las viviendas disponibles. Esto puede ayudar a optimizar estrategias de alquiler o inversión inmobiliaria. También puede asistir a personas que buscan un nuevo hogar en Valencia a entender mejor la dinámica del mercado en una de las ciudades más de moda en España.</p>
+<p>Además, <strong>se entrenó un modelo para estimar los precios de alquiler</strong>, proporcionando una estimación preliminar basada en el entorno inmobiliario de Valencia. Si estás considerando invertir en una propiedad para alquilar, también puedes usar este modelo para comparar precios de compra potenciales con los ingresos estimados de alquiler.</p>
+<p><img alt="prediction example" src="/images/prediction_example.gif"></p>
+</blockquote>
+<blockquote>
+<p>Antes de entrar en detalles, es importante señalar que los datos sobre este tema son muy valiosos, por lo que los principales sitios web de alquiler los protegen cuidadosamente. Como resultado, <strong>los datos utilizados en este proyecto no son tan completos como nos gustaría.</strong> Por ejemplo, no todos los distritos de Valencia tienen información suficiente para ser confiables. El modelo entrenado solo incluye los distritos marcados en verde en el siguiente mapa, mientras que otras áreas están agregadas, lo que las hace menos precisas.</p>
+<p><img alt="Data available map" src="/images/map_data_available.png"></p>
+</blockquote>
+<blockquote>
+<h3 id="distribución-de-precios">Distribución de precios</h3>
+<p><img alt="Price boxplot" src="/images/price_distribution.png"></p>
+</blockquote>
+<h3 id="puntos-técnicos-clave">Puntos técnicos clave</h3>
+<hr>
+<ul>
+<li>
+<p><strong>Web scraping:</strong> Extracción de datos protegidos de anuncios de propiedades utilizando Selenium y BeautifulSoup.</p>
+</li>
+<li>
+<p><strong>Manejo de datos faltantes:</strong> Relleno de valores faltantes mediante la creación de proporciones relevantes con los datos disponibles.</p>
+</li>
+<li>
+<p><strong>Enfoques de modelado:</strong> Entrenamiento de múltiples modelos de regresión para predecir los precios de alquiler.</p>
+</li>
+<li>
+<p><strong>Enriquecimiento de datos y optimización:</strong> Eliminación de valores extremos y enriquecimiento del conjunto de datos con características adicionales mediante nuevas rondas de web scraping.</p>
+</li>
+</ul>
+<h3 id="perspectivas-económicas">Perspectivas económicas</h3>
+<hr>
+<ul>
+<li>
+<p><strong>Precios por barrios:</strong> Los barrios céntricos son más caros en comparación con otros.</p>
+</li>
+<li>
+<p><strong>Oportunidades de mercado:</strong> Algunos distritos cercanos al centro pueden presentar oportunidades debido a sus precios de alquiler relativamente más bajos.</p>
+</li>
+<li>
+<p><strong>Precio por metro cuadrado:</strong> Las viviendas más pequeñas tienden a tener un precio por metro cuadrado más alto, muchas de ellas ubicadas en el centro de la ciudad.</p>
+</li>
+<li>
+<p><strong>Alquileres de una habitación:</strong> Las viviendas de una habitación son típicamente muy pequeñas y tienen precios por metro cuadrado más altos.</p>
+</li>
+</ul>
+<h2 id="1-datos">1. Datos</h2>
+<hr>
+<h3 id="11--web-scraping">1.1.  Web scraping</h3>
+<p>Como se mencionó anteriormente, los datos sobre este tema son difíciles de obtener. Las principales compañías de alquiler invierten mucho en evitar que otros extraigan datos de sus sitios web. Tras no poder superar las medidas de seguridad de las principales compañías, logramos extraer datos de un sitio web de segunda categoría con menos observaciones.</p>
+<p>Las herramientas utilizadas para la recuperación de datos fueron:</p>
+<blockquote>
+<p><strong>Selenium: para abrir y desplazarse por las páginas, evitando el lazy loading y recuperando el archivo HTML.</strong></p>
+<p><strong>Beatiful Soup: para extraer la información necesaria.</strong></p>
+</blockquote>
+<p><strong>El código de web scraping y los conjuntos de datos no se comparten por razones legales.</strong></p>
+<h3 id="12-reestructuración-de-datos">1.2. Reestructuración de datos</h3>
+<p>Esta sección presenta el archivo <em><strong>Data_restructuring.ipynb</strong></em>, diseñado para ayudar a las partes interesadas a comprender mejor la información recuperada del sitio web sin compartir el código de scraping o los conjuntos de datos.</p>
+<h3 id="13-relleno-de-valores-faltantes">1.3 Relleno de valores faltantes</h3>
+<p>Es común encontrar características incompletas al trabajar con datos, y este caso no es una excepción. Se utilizaron varias estrategias para rellenar los valores faltantes, detalladas en el archivo <em><strong>Data_exploration.ipynb</strong></em>. Algunos métodos interesantes merecen ser destacados.</p>
+<p>A primera vista, características como el número de habitaciones y la superficie son muy importantes, por lo que utilizar un SimpleImputer puede no funcionar bien.  Se necesitaron enfoques más creativos, como calcular ratios para estimar los valores faltantes.</p>
+<blockquote>
+<p>Por ejemplo, para rellenar los valores de superficie faltantes, usamos observaciones donde los datos estaban completos para calcular <strong>una proporción entre la superficie y las diferentes partes de la vivienda. Estos espacios se ponderaron en función de su tamaño relativo a una habitación.</strong> La ecuación siguiente define esta constante:</p>
+<p>$$Ratio = \frac{1}{n} \times \sum_{k=1}^n  \frac{Surface_k [m^2]}{1 \times Rooms_k + 0,5 \times Bathrooms_k + 0,75 \times Terrace_k + 0,25 \times Balcony_k} $$</p>
+<p>Después de calcular este ratio, para los anuncios donde se conocía el número de habitaciones pero faltaba la superficie, la estimamos multiplicando sus valores ponderados por el ratio.</p>
+<p>$$Surface Estimation_k = Ratio \times (Rooms_k + 0,5 \times Bathrooms_k + 0,75 \times Terrace_k + 0,25 \times Balcony_k)$$</p>
+</blockquote>
+<h3 id="14-características-finales--número-de-observaciones">1.4. Características finales + número de observaciones</h3>
+<p><strong>Número de observaciones: 711</strong></p>
+<p><strong>Características</strong></p>
+<ul>
+<li><strong>House_type:</strong> Tipo de vivienda.</li>
+<li><strong>Location:</strong> Barrio de la ciudad donde se ubica la vivienda.</li>
+<li><strong>Furnished:</strong> Si la vivienda está amueblada o no.</li>
+<li><strong>Elevator:</strong> Si la vivienda tiene ascensor o no.</li>
+<li><strong>Terrace:</strong> Si la vivienda tiene terraza o no.</li>
+<li><strong>Balcony:</strong> Si la vivienda tiene balcón o no.</li>
+<li><strong>Storage:</strong> Si la vivienda tiene trastero o no.</li>
+<li><strong>Rooms:</strong> Nº de habitaciones.</li>
+<li><strong>Bathrooms:</strong> Nº de baños.</li>
+<li><strong>Surface:</strong> Metros cuadrados de la vivienda.</li>
+<li><strong>Agent_cat:</strong> Tipo de agente inmobiliario que gestiona el anuncio <em>(añadido durante la optimización del modelo, también puede indicar vivienda Premium/No premium).</em></li>
+<li><strong>Price:</strong> Variable objetivo (alquiler).</li>
+</ul>
+<h2 id="2-análisis">2. Análisis</h2>
+<hr>
+<p>Un análisis completo de las características del conjunto de datos está disponible en el archivo <em><strong>Data_exploration.ipynb</strong></em>. Aquí se presentan los entendimientos más relevantes.</p>
+<h3 id="21-precio-por-metro-cuadrado-por-ubicación">2.1. Precio por metro cuadrado por ubicación</h3>
+<p>Una de las métricas más comunes para comprender el mercado inmobiliario es el precio por metro cuadrado. Esta variable fue calculada, y el gráfico a continuación muestra los distritos con los precios más altos y más bajos. Aunque es simple, esta métrica es crucial para comprender la dinámica inmobiliaria de la ciudad.</p>
+<p><img alt="Top 5 and bottom 5 prices per square meter" src="/images/highest_lowest_prices.png"> <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>El siguiente mapa ilustra el precio por metro cuadrado en cada barrio, mostrando un patrón claro: <strong>los barrios en el centro de la ciudad son más caros</strong> que los más alejados. Además, <strong>algunos distritos cercanos al centro pueden representar oportunidades de mercado</strong> debido a sus precios relativamente más bajos.</p>
+<p><img alt="Price map" src="/images/map_price.png"></p>
+<h3 id="22-precio-por-metro-cuadrado-según-el-número-de-habitaciones">2.2. Precio por metro cuadrado según el número de habitaciones</h3>
+<p>Normalmente, se esperaría que cuantas más habitaciones tenga una vivienda, más cara sea. Sin embargo, si examinamos el precio por metro cuadrado, ocurre lo contrario. Como se muestra en los diagramas de caja a continuación, las viviendas con menos habitaciones tienden a tener un precio por metro cuadrado más alto. Se formularon dos hipótesis para explorar este comportamiento:</p>
+<blockquote>
+<p><strong><!-- raw HTML omitted -->Hipótesis 1:<!-- raw HTML omitted --> Las viviendas de una habitación son pequeñas, por lo que tienen un €/m² más alto debido a un umbral de precio mínimo.</strong> <!-- raw HTML omitted --></p>
+<p><strong><!-- raw HTML omitted -->Hipótesis 2:<!-- raw HTML omitted --> Las viviendas con más habitaciones se encuentran en zonas con menor €/m².</strong></p>
+</blockquote>
+<p><img alt="Price per square meter boxplots by rooms" src="/images/price_distribution_rooms.png"></p>
+<h4 id="221-tamaño-según-número-de-habitaciones">2.2.1. Tamaño según número de habitaciones</h4>
+<p>Para verificar la primera hipótesis, se graficó la superficie promedio para cada número de habitaciones. <strong>Las viviendas de una habitación tienen un promedio de 50 m², y el mayor incremento en superficie (66%) ocurre entre viviendas de una y dos habitaciones.</strong> Podemos concluir que las viviendas de una habitación son significativamente más pequeñas.</p>
+<p><img alt="Average surface by rooms" src="/images/average_surface_rooms.png"></p>
+<h4 id="222-número-de-habitaciones-por-ubicación">2.2.2. Número de habitaciones por ubicación</h4>
+<p>Para verificar la segunda hipótesis, se clasificaron las ubicaciones según el precio por metro cuadrado en cuatro rangos: [&rsquo;&lt;16 €/m²&rsquo;, &lsquo;16-19 €/m²&rsquo;, &lsquo;19-22 €/m²&rsquo;, &lsquo;&gt;22 €/m²&rsquo;]. <strong>A mayor precio por metro cuadrado, menor es el número de habitaciones</strong> de las viviendas en esa área. Un mapa ilustra además que <strong>los precios más altos por metro cuadrado se encuentran en el centro de la ciudad, donde las viviendas más pequeñas son más comunes.</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">'</th>
+          <th style="text-align: center">'</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><img alt="Price map by range" src="/images/map_price_range.png"></td>
+          <td style="text-align: center"><img alt="Price map by range" src="/images/average_n_rooms.png"></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="3-modelo">3. Modelo</h2>
+<hr>
+<p>En esta sección se explica el proceso de entrenamiento de un modelo para estimar los precios de alquiler basándose en sus características. <strong>El objetivo era lograr un RMSE (raíz del error cuadrático medio) por debajo de 300</strong>, lo cual es razonable dada la pequeña cantidad de datos. Para más detalles, ver el archivo <em><strong>Modelling.ipynb</strong></em>.</p>
+<h3 id="31-primeros-resultados">3.1. Primeros resultados</h3>
+<p>Después de preprocesar los datos, se entrenaron varios modelos de regresión. Aunque se calcularon varias métricas, la métrica elegida para la comparación fue el RMSE, ya que tiene la misma dimensión que la variable objetivo (precio).</p>
+<p><strong>Resultados</strong> (Modelos más destacados):</p>
+<ul>
+<li>Regresión Lineal: <em>Desempeño decente en el test (RMSE=499) a pesar de su simplicidad</em></li>
+<li>RandomForestRegresor: <em>Rendimiento notable en el test (RMSE=460 // Mejor) y gran diferencia con el entrenamiento (RMSE=235) debido a overfitting, lo que podría ser optimizable con hiperparámetros específicos</em></li>
+<li>GradientBoostingRegressor: <em>Mejor rendimiento en el test <strong>(RMSE=460)</strong></em></li>
+</ul>
+<p><img alt="First models results" src="/images/First_models_results.png"></p>
+<h3 id="32-optimización">3.2. Optimización</h3>
+<p>Después de los resultados iniciales, se llevó a cabo un proceso de optimización para alcanzar el RMSE objetivo (&lt;300).</p>
+<h4 id="321-eliminación-de-valores-extremos">3.2.1. Eliminación de valores extremos</h4>
+<blockquote>
+<p>Para entender el rendimiento del modelo, se analizaron las diferencias entre las predicciones del modelo Random Forest y los valores reales. Las mayores diferencias fueron en predicciones altamente subestimadas.</p>
+<p><img alt="Histogram extreme values" src="/images/histogram_extreme_values.png"></p>
+</blockquote>
+<blockquote>
+<p>Un diagrama de dispersión comparando las predicciones con los valores reales muestra que <strong>los valores extremos (por encima de €2925) son consistentemente subestimados</strong> y representan la mayoría de los errores más grandes. En el gráfico a continuación también se ven tres líneas que marcan la estimación perfecta y el rango de +/- 300 (objetivo de RMSE).</p>
+<p><img alt="Pred vs Real" src="/images/predvsreal_extreme_values.png"></p>
+<p><strong>El enfoque fue eliminar muchos de estos valores extremos</strong> para reducir el error artificial y evitar sobreestimaciones en otras observaciones. No se eliminaron todos los valores extremos para evitar, por un lado, una pérdida excesiva de datos y, por otro, subestimaciones en ofertas alrededor del umbral.</p>
+<p>Este paso de optimización resultó en una <strong>reducción del RMSE de 460 a 358 en el modelo Gradient Boosting.</strong></p>
+</blockquote>
+<h4 id="322-enriquecimiento-del-conjunto-de-datos-con-una-nueva-característica">3.2.2. Enriquecimiento del conjunto de datos con una nueva característica</h4>
+<p>Durante el análisis de las ofertas más subestimadas en el sitio web donde proceden los datos, identificamos una característica potencial. Muchas de estas ofertas fueron listadas por la misma agencia inmobiliaria: Engel &amp; Völkers. Estas propiedades parecían ser estéticamente más atractivas y comfortables. Esta información no se había recopilado durante el primer web scraping, por lo que se realizó <strong>un nuevo proceso de web scraping</strong> para recuperar los nombres de las agencias asociadas a cada oferta.</p>
+<p>Para evaluar el impacto de la agencia en los precios de alquiler, se graficó un histograma que mostraba la distribución del precio por metro cuadrado para diferentes agencias. Los resultados revelaron una clara distinción, con una brecha alrededor de 23 €/m², lo que llevó a la creación de <strong>una nueva característica binaria, &lsquo;Agent_cat&rsquo;, que puede ser interpretada como la distinción entre propiedades premium y no premium.</strong></p>
+<p><img alt="Histogram agents" src="/images/histogram_agents.png"></p>
+<p>Al incorporar esta nueva característica en el modelo, se logró una mejora en el rendimiento. Por ejemplo, <strong>el modelo Gradient Boosting alcanzó un RMSE de prueba de 305.</strong></p>
+<h4 id="323-búsqueda-de-los-mejores-hiperparámetros">3.2.3. Búsqueda de los mejores hiperparámetros</h4>
+<p>Después de la introducción de la característica &lsquo;Agent_cat&rsquo;, el modelo Random Forest tuvo un RMSE de 148 en el conjunto de entrenamiento y 317 en el de prueba. Esta brecha significativa sugería overfitting, por lo que se intentó optimizar los hiperparámetros para mejorar el rendimiento del modelo. Sin embargo, el RMSE resultante en el conjunto de prueba, de 306, no fue una mejora sustancial lo que lo hizo insuficiente para superar al modelo Gradient Boosting.</p>
+<p><img alt="Final models results" src="/images/Final_models_results.png"></p>
+<p><strong>Por lo tanto, el modelo final seleccionado es el Gradient Boosting regressor, que logró un RMSE de prueba de 305.</strong></p>
+<h2 id="4-próximos-pasos">4. Próximos pasos</h2>
+<p>Quedan varias tareas pendientes debido a limitaciones de recursos, pero es importante mencionarlas, ya que pueden mejorar significativamente el proyecto en el futuro. Las principales tareas incluyen:</p>
+<ul>
+<li>
+<p><strong>Adquirir más datos para expandir el conjunto de datos e introducir características adicionales.</strong></p>
+</li>
+<li>
+<p><strong>Realizar un análisis similar en el mercado de compra de propiedades para comparar resultados e identificar oportunidades de inversión.</strong></p>
+</li>
+<li>
+<p><strong>Actualizar periódicamente el conjunto de datos para monitorear y analizar las tendencias, obteniendo información sobre el comportamiento dinámico del mercado de alquileres.</strong></p>
+</li>
+</ul>
+<p><a href="https://github.com/guitrena/Rental-Market-in-Valencia">Link to the GitHub repository</a></p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="/es/" >
+    &copy;  Guillermo Trenor 2024 
+  </a>
+    <div><div class="ananke-socials"><a href="http://linkedin.com/in/guillermo-trenor-navarro-2a18672ab" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a><a href="https://github.com/guitrena/" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition github link dib z-999 pt3 pt0-l mr1"
+        title="follow on GitHub - Opens in a new window"
+        aria-label="follow on GitHub - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+            
+          </span></a></div>
+
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Project 2: Walmart Sales | Guillermo Trenor</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Analysis of Walmart sales data from 45 stores across the U.S., aiming to forecast weekly sales for different store-department combinations and investigate the key factors influencing sales trends.
+Technical key points
+
+Data merging and cleaning: Combining four datasets, handling missing values in markdown features by averaging values across same store types.
+Statistical analysis: Conducting ANOVA and Pearson correlation tests to analyze sales&rsquo; relationship with various features (Temperature, CPI, Unemployment, etc.).
+Dashboard creation: Developing an interactive dashboard to visualize sales trends, seasonal patterns, and correlations for specific departments.
+Time series modeling: Training SARIMA and SARIMAX models for weekly sales forecasting, selecting external variables based on correlation significance, and using AUTO ARIMA for optimization.
+Model evaluation: Analyzing best and worst performing models and improving model accuracy through parameter adjustments.
+
+Economic insights
+
+Holiday effect on sales: Significant sales peaks during holidays, with holiday periods driving nearly 300% higher sales in certain departments for the cases studied.
+Seasonal trends: Departments such as 28 show a strong correlation between sales and temperature, with lower temperatures driving higher sales.
+Sales decline trends: Certain departments show a declining sales trend (e.g., Department 28 with a 14% drop), potentially linked to economic indicators like CPI and unemployment.
+Department-specific insights: Department sales dynamics vary widely, with some experiencing unpredictable peaks that can&rsquo;t be explained without more context.
+Model performance: External variables improve forecasts in some cases, but not all, indicating the complexity of sales patterns across different stores and departments.
+">
+    <meta name="generator" content="Hugo 0.136.4">
+    
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.88b9752140ac8f6a7b3d156e04caf06413e4651761dfcf351d9e11e725aaabf2.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="/post/project-2/">
+    
+
+    <meta property="og:url" content="/post/project-2/">
+  <meta property="og:site_name" content="Guillermo Trenor">
+  <meta property="og:title" content="Project 2: Walmart Sales">
+  <meta property="og:description" content="Analysis of Walmart sales data from 45 stores across the U.S., aiming to forecast weekly sales for different store-department combinations and investigate the key factors influencing sales trends.
+Technical key points Data merging and cleaning: Combining four datasets, handling missing values in markdown features by averaging values across same store types. Statistical analysis: Conducting ANOVA and Pearson correlation tests to analyze sales’ relationship with various features (Temperature, CPI, Unemployment, etc.). Dashboard creation: Developing an interactive dashboard to visualize sales trends, seasonal patterns, and correlations for specific departments. Time series modeling: Training SARIMA and SARIMAX models for weekly sales forecasting, selecting external variables based on correlation significance, and using AUTO ARIMA for optimization. Model evaluation: Analyzing best and worst performing models and improving model accuracy through parameter adjustments. Economic insights Holiday effect on sales: Significant sales peaks during holidays, with holiday periods driving nearly 300% higher sales in certain departments for the cases studied. Seasonal trends: Departments such as 28 show a strong correlation between sales and temperature, with lower temperatures driving higher sales. Sales decline trends: Certain departments show a declining sales trend (e.g., Department 28 with a 14% drop), potentially linked to economic indicators like CPI and unemployment. Department-specific insights: Department sales dynamics vary widely, with some experiencing unpredictable peaks that can’t be explained without more context. Model performance: External variables improve forecasts in some cases, but not all, indicating the complexity of sales patterns across different stores and departments.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2024-10-22T11:00:59-04:00">
+    <meta property="article:modified_time" content="2024-10-22T11:00:59-04:00">
+
+  <meta itemprop="name" content="Project 2: Walmart Sales">
+  <meta itemprop="description" content="Analysis of Walmart sales data from 45 stores across the U.S., aiming to forecast weekly sales for different store-department combinations and investigate the key factors influencing sales trends.
+Technical key points Data merging and cleaning: Combining four datasets, handling missing values in markdown features by averaging values across same store types. Statistical analysis: Conducting ANOVA and Pearson correlation tests to analyze sales’ relationship with various features (Temperature, CPI, Unemployment, etc.). Dashboard creation: Developing an interactive dashboard to visualize sales trends, seasonal patterns, and correlations for specific departments. Time series modeling: Training SARIMA and SARIMAX models for weekly sales forecasting, selecting external variables based on correlation significance, and using AUTO ARIMA for optimization. Model evaluation: Analyzing best and worst performing models and improving model accuracy through parameter adjustments. Economic insights Holiday effect on sales: Significant sales peaks during holidays, with holiday periods driving nearly 300% higher sales in certain departments for the cases studied. Seasonal trends: Departments such as 28 show a strong correlation between sales and temperature, with lower temperatures driving higher sales. Sales decline trends: Certain departments show a declining sales trend (e.g., Department 28 with a 14% drop), potentially linked to economic indicators like CPI and unemployment. Department-specific insights: Department sales dynamics vary widely, with some experiencing unpredictable peaks that can’t be explained without more context. Model performance: External variables improve forecasts in some cases, but not all, indicating the complexity of sales patterns across different stores and departments.">
+  <meta itemprop="datePublished" content="2024-10-22T11:00:59-04:00">
+  <meta itemprop="dateModified" content="2024-10-22T11:00:59-04:00">
+  <meta itemprop="wordCount" content="2284">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Project 2: Walmart Sales">
+  <meta name="twitter:description" content="Analysis of Walmart sales data from 45 stores across the U.S., aiming to forecast weekly sales for different store-department combinations and investigate the key factors influencing sales trends.
+Technical key points Data merging and cleaning: Combining four datasets, handling missing values in markdown features by averaging values across same store types. Statistical analysis: Conducting ANOVA and Pearson correlation tests to analyze sales’ relationship with various features (Temperature, CPI, Unemployment, etc.). Dashboard creation: Developing an interactive dashboard to visualize sales trends, seasonal patterns, and correlations for specific departments. Time series modeling: Training SARIMA and SARIMAX models for weekly sales forecasting, selecting external variables based on correlation significance, and using AUTO ARIMA for optimization. Model evaluation: Analyzing best and worst performing models and improving model accuracy through parameter adjustments. Economic insights Holiday effect on sales: Significant sales peaks during holidays, with holiday periods driving nearly 300% higher sales in certain departments for the cases studied. Seasonal trends: Departments such as 28 show a strong correlation between sales and temperature, with lower temperatures driving higher sales. Sales decline trends: Certain departments show a declining sales trend (e.g., Department 28 with a 14% drop), potentially linked to economic indicators like CPI and unemployment. Department-specific insights: Department sales dynamics vary widely, with some experiencing unpredictable peaks that can’t be explained without more context. Model performance: External variables improve forecasts in some cases, but not all, indicating the complexity of sales patterns across different stores and departments.">
+
+      
+    
+	
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('/images/walmart_empleado.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        Guillermo Trenor
+      
+    </a>
+    <div class="flex-l items-center">
+      
+<h4></h4>
+<ul class="pl0 mr3">
+    
+    <li class="list f5 f4-ns fw4 dib pr3">
+        <a class="hover-white no-underline white-90" href="/es/post/project-2/">es</a>
+    </li>
+    
+</ul>
+
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/about/" title="About me page">
+              About me
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/contact/" title="Contact page">
+              Contact
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/post/" title="Projects page">
+              Projects
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"><a href="http://linkedin.com/in/guillermo-trenor-navarro-2a18672ab" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a><a href="https://github.com/guitrena/" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition github link dib z-999 pt3 pt0-l mr1"
+        title="follow on GitHub - Opens in a new window"
+        aria-label="follow on GitHub - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+            
+          </span></a></div>
+
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">Project 2: Walmart Sales</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+
+
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Projects
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+
+
+<h1 class="f1 athelas mt3 mb1">Project 2: Walmart Sales</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2024-10-22T11:00:59-04:00">October 22, 2024</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100"><h1 id="walmart-sales">Walmart Sales</h1>
+<h2 id="0-introduction">0. Introduction</h2>
+<p>This project is based on a <strong>competition found in Kaggle launched by the Walmart&rsquo;s Recruiting team</strong>. The link to the competition is: <a href="https://www.kaggle.com/competitions/walmart-recruiting-store-sales-forecasting/overview">https://www.kaggle.com/competitions/walmart-recruiting-store-sales-forecasting/overview</a></p>
+<p>The competition&rsquo;s description is as follows: &ldquo;In this recruiting competition, job-seekers are provided with historical sales data for 45 Walmart stores located in different regions. Each store contains many departments, and participants must project the sales for each department in each store. To add to the challenge, selected holiday markdown events are included in the dataset.&rdquo;</p>
+<p>The objective of the competition was to predict weekly sales for each store, department, and date. Participants were required to submit predictions for a year using historical data from previous years. <em>For the predictions, only the features were provided, without access to the target variable, making it impossible to evaluate performance on the test set.</em></p>
+<p>Although not explicitly required, we will perform a thorough analysis. Due to the large volume of data and the variety of departments, we have defined a methodology for analyzing sales across departments, starting with the development of a dashboard. Following this, a few example cases will be presented.</p>
+<h2 id="1-data">1. Data</h2>
+<h3 id="datasets-overview">Datasets Overview</h3>
+<p>The project is composed of <strong>4 different datasets:</strong></p>
+<ul>
+<li><strong>stores.csv:</strong> contains anonymized information about the 45 stores, indicating the type and size of store.</li>
+<li><strong>train.csv:</strong> the historical training data, which covers to 2010-02-05 to 2012-11-01.</li>
+</ul>
+<blockquote>
+<p>This file contains the following fields:</p>
+<p>Store - the store number <!-- raw HTML omitted -->
+Dept - the department number <!-- raw HTML omitted -->
+Date - the week  <!-- raw HTML omitted -->
+Weekly_Sales -  sales for the given department in the given store <!-- raw HTML omitted -->
+IsHoliday - whether the week is a special holiday week <!-- raw HTML omitted --></p>
+</blockquote>
+<ul>
+<li><strong>test.csv:</strong> This file is identical to train.csv, except there is no weekly sale.</li>
+<li><strong>features.csv:</strong> This file contains additional data related to the store, department, and regional activity for the given dates.</li>
+</ul>
+<blockquote>
+<p>It contains the following fields:</p>
+<p>Store - the store number <!-- raw HTML omitted -->
+Date - the week<!-- raw HTML omitted -->
+Temperature - average temperature in the region<!-- raw HTML omitted -->
+Fuel_Price - cost of fuel in the region<!-- raw HTML omitted -->
+MarkDown1-5 - anonymized data related to promotional markdowns that Walmart is running. Any missing value is marked with an NA.<!-- raw HTML omitted -->
+CPI - the consumer price index<!-- raw HTML omitted -->
+Unemployment - the unemployment rate <!-- raw HTML omitted -->
+IsHoliday - whether the week is a special holiday week</p>
+</blockquote>
+<p><strong>In the <em>data.ipynb</em> notebook, these datasets were merged into one.</strong></p>
+<h3 id="handling-missing-values">Handling Missing Values</h3>
+<p>The only missing values are in the markdown features (MarkDown1 to 5). These features have no data before 11-11-2011, and even after that date, some values remain missing. Therefore, while the full dataset spans nearly three years, markdown data is only available for one year.</p>
+<p><img src="/images/period_markdown_data.png"></p>
+<p>Markdowns are store-specific, making it difficult to fill missing values. To address this, we examined the trends of these variables across store types, plotting the mean, maximum, and minimum values over time <em>(see the data_exploration.ipynb notebook)</em>. We found that stores of the same type displayed similar trends and dimensions. Based on this, we filled missing values using the average for the corresponding store type and date. When no data was available for any store in a given group, we used 0 as the default value.</p>
+<p>However, we still have missing values for the initial period, where no markdown data is available. This issue will be addressed during the modeling phase.</p>
+<h2 id="2-analysis">2. Analysis</h2>
+<h3 id="data_explorationipynb-file">data_exploration.ipynb file</h3>
+<p>In this notebook, we conduct data exploration to better understand the dataset. The analysis is divided into the following sections:</p>
+<ul>
+<li><strong>Removing Negative Sales</strong> Filtering out rows where weekly sales are negative, as they are not valid.</li>
+<li><strong>Store types:</strong> Understanding store classification and reclassifying two stores based on size and department presence.</li>
+<li><strong>Filling Missing Markdowns:</strong> Explained in section <em>1. Data (Fill NA Values)</em></li>
+<li><strong>By Department:</strong> Grouping data by department to obtain general statistics (e.g., sales, percentage of total sales). Additionally, performing ANOVA tests to examine correlations between qualitative variables (&lsquo;IsHoliday&rsquo;) and &lsquo;Weekly_Sales&rsquo;, with boxplots created if significant (p-value &lt; 0.01). Finally, performing Pearson correlation tests are used for quantitative variables (&lsquo;Temperature&rsquo;, &lsquo;CPI&rsquo;, &lsquo;Unemployment&rsquo;, &lsquo;Fuel_Price&rsquo;), and regression plots are displayed if the correlation is significant (p-value &lt; 0.01).</li>
+<li><strong>Example Cases:</strong> Visualizing necessary graphs to analyze specific cases.</li>
+</ul>
+<h3 id="dashboard">Dashboard</h3>
+<p>As mentioned earlier, the dataset is large and needs to be segmented for focused analysis. A dashboard was developed to facilitate this, providing various analysis elements for individual departments. While not definitive for drawing conclusions, it helps to understand department behavior and serves as a starting point for hypothesis generation.</p>
+<p><img src="/images/dashboard_example28.png"></p>
+<p>The dashboard consists of four sections:</p>
+<ul>
+<li>
+<p><strong>Department Selection:</strong> Allows users to select a department through a dropdown menu and display its information using a button.</p>
+</li>
+<li>
+<p><strong>General stats:</strong></p>
+</li>
+</ul>
+<blockquote>
+<p>    - General: Time period, total sales, percentage of overall sales, and sales ranking.</p>
+<p>    - Store Presence: Percentage of stores carrying the department, broken down by store type.</p>
+<p>    - Distribution of Weekly Sales: A boxplot of weekly sales for the selected department over the specified period.</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>Seasonal Decompose:</strong> Displays the observed sales, trend, seasonal, and residual components for the selected department&rsquo;s weekly sales.</p>
+</li>
+<li>
+<p><strong>Weekly Sales correlation with other features:</strong> : Regression plots for quantitative variables if a significant Pearson test result (p-value &lt; 0.01) is found, and boxplots for qualitative variables if ANOVA results are significant. If no significant correlation is found, the plot is grayed out with a message displaying the p-value. Five tests are performed:</p>
+</li>
+</ul>
+<blockquote>
+<p>    - Temperature vs Weekly_Sales</p>
+<p>    - IsHoliday vs Weekly_Sales</p>
+<p>    - CPI vs Weekly_Sales</p>
+<p>    - Unemployment vs Weekly_Sales</p>
+<p>    - Fuel_Price vs Weekly_Sales</p>
+</blockquote>
+<h3 id="example-cases">Example Cases</h3>
+<p>To demonstrate the dashboard&rsquo;s utility, we explore two example departments. The dashboard serves as a starting point for examining various factors influencing sales dynamics in the department.</p>
+<p>It is important to note that the dataset is anonymized, making it more difficult to analyze since contextual details are missing.</p>
+<h4 id="department-28">Department 28</h4>
+<p><img src="/images/dashboard_example28.png"></p>
+<p>In the dashboard, we see that sales in this department are correlated with temperature, CPI, unemployment, and fuel prices. However, this correlation does not necessarily imply causality.</p>
+<blockquote>
+<p>To further investigate the relationship between temperature and sales, we plotted the two variables over time.</p>
+<p><img src="/images/temperature_sales28.png"></p>
+<p>Based on the graph, it seems reasonable to conclude that lower temperatures may drive higher sales in this department. However, further context is needed to confirm this hypothesis.</p>
+</blockquote>
+<blockquote>
+<p>For the other correlated features, the regression plots are less clear compared to the temperature plot. To dig deeper, we plotted the evolution of these features over time.</p>
+<p><img src="/images/economic_indicators.png"></p>
+<p>The trends for CPI, fuel prices, and unemployment are evident: CPI and fuel prices are rising, while unemployment is decreasing. Department 28’s sales also exhibit a decreasing trend, dropping by around 14%. This explains the correlation between sales and these features. <!-- raw HTML omitted --></p>
+<p><img src="/images/trend28.png"></p>
+<p>However, we cannot definitively conclude causality because of the lack of contextual information. For instance, the second winter period had warmer temperatures, which could explain the decrease in sales.</p>
+</blockquote>
+<h5 id="_conclusions_"><em>Conclusions</em></h5>
+<ul>
+<li><strong>Sales in this department are influenced by temperature.</strong> Lower temperatures are associated with higher sales.</li>
+<li><strong>Sales trend decreasing by 14%.</strong> This decline could be attributed to rising CPI or warmer winters, but further context is required to confirm either hypothesis.</li>
+</ul>
+<h4 id="department-22">Department 22</h4>
+<p><img src="/images/dashboard_example22.png"></p>
+<p>The dashboard indicates correlations between sales in this department and all the key variables. However, correlation does not necessarily imply causality.</p>
+<blockquote>
+<p>To further investigate the relationship between temperature and sales, we plotted both variables over time.</p>
+<p><img src="/images/temperature_sales22.png"></p>
+<p>The graph suggests that temperature does not significantly affect sales, which remain stable except for two peaks. We will explore these peaks below.</p>
+</blockquote>
+<blockquote>
+<p>To investigate the relationship between holidays periods and sales we plotted them.</p>
+<p><img src="/images/holidays_sales22.png"></p>
+<p>The two peaks align precisely with Thanksgiving and Christmas. As shown in the dashboard’s seasonal plot, sales during these weeks are almost 100% higher than usual.</p>
+</blockquote>
+<blockquote>
+<p>For the remaining features (CPI, Unemployment, Fuel Price), the relationship is similar to Department 28. CPI and fuel prices trend upward, unemployment trends downward, and sales in Department 22 show a decreasing trend (8.7%).</p>
+<p><img src="/images/trend22.png"></p>
+<p>However, without additional context, we cannot assert causality.</p>
+</blockquote>
+<h5 id="_conclusions_-1"><em>Conclusions</em></h5>
+<ul>
+<li><strong>Two sales peaks occur during Thanksgiving and Christmas (+100%).</strong></li>
+<li><strong>Sales trend decreasing by 8.7%.</strong> This may be linked to rising CPI, though further context is needed.</li>
+</ul>
+<h2 id="3-modelling">3. Modelling</h2>
+<p>The original competition aimed to estimate the weekly sales for the test set, but in our case, we are estimating the sales for the last year of data to compare the predictions with the actual values. Therefore, the markdown features (which are only present for the last year) were removed since we cannot extrapolate these for the entire year without further information about these variables.</p>
+<h3 id="process">Process</h3>
+<p>When it comes to modeling, the first critical step is choosing the right strategy. This becomes even more important when dealing with a large dataset that needs to be broken down into manageable parts.</p>
+<p>In this case, we trained several models by considering each combination of department and store. The selected models were similar in nature:</p>
+<ul>
+<li><strong>SARIMA:</strong> A time series forecasting model designed to handle data with seasonal patterns.</li>
+<li><strong>SARIMAX:</strong> An extension of SARIMA that includes external variables to enhance the analysis.</li>
+</ul>
+<p>After selecting the models, we implemented a strategy to choose the external variables for each model. This was based on the results of the ANOVA and Pearson tests conducted earlier, which compared each feature to the Weekly Sales. If a feature showed significant correlation, it was included in the SARIMAX model. For some cases where no features were correlated, the SARIMAX model was not trained.</p>
+<p>To save time, the models were trained using <strong>AUTO ARIMA</strong>, which automatically selects the appropriate terms for each model.</p>
+<p>Finally, we plotted the historical data alongside the forecast to analyze the results.</p>
+<p>Additionally, we decided to limit this strategy to a reduced number of models. Specifically, we chose to train models only for <strong>Departments 22 and 28, and Store 1</strong>, which reduced the number of cases from 3,211 to 160. This decision was due to computational constraints. For example, the batch selected took nearly 6 hours to process. By estimating the time required to train the entire dataset, it would have taken approximately 120 hours.</p>
+<p>Below is a diagram summarizing the entire process:
+<img src="/images/process_diagram.png"></p>
+<h3 id="results">Results</h3>
+<p>We trained the Store-Department combinations for the following:</p>
+<ul>
+<li>Department 22</li>
+<li>Department 28</li>
+<li>Store 1</li>
+</ul>
+<p>For each group, we present a summary that shows the best, average, and worst error percentage (RMSE/Average Weekly Sales) within the group. We also show the percentage breakdown of the best-performing models, categorized as <strong>SARIMA</strong> (no SARIMAX trained), <strong>SARIMA(x)</strong> (SARIMA was the best model between the two), and <strong>SARIMAX</strong> (SARIMAX was the best model between the two).</p>
+<p>After that, we plot and analyze the best and worst cases within each group, correcting the model if necessary.</p>
+<h4 id="department-22-1">Department 22</h4>
+<blockquote>
+<p><strong>Summary key points:</strong></p>
+<ul>
+<li>Minimum and average percentage errors are relatively similar. The difference seems to stem from extreme values (the worst case having a 47.62% error).</li>
+<li>More than 70% of combinations have correlated features.</li>
+<li>External variables are relevant in only 32% of the cases.</li>
+</ul>
+<p><img src="/images/summary22.png"></p>
+</blockquote>
+<blockquote>
+<p><strong>Best prediction:</strong> Store 23 with a 12.13% error.</p>
+<p><strong>Key points:</strong></p>
+<ul>
+<li>The model used is <strong>SARIMA.</strong></li>
+<li>The worst predictions are during two sales peaks (Christmas and the last week of August).</li>
+<li>The Christmas peak is not as poorly predicted as it seems. The week before Christmas is overestimated by 5,954, and Christmas week is underestimated by 6,784. If these two weeks are aggregated into a &ldquo;Christmas period,&rdquo; the underestimation is just 838 for the whole period.</li>
+<li>As for the second period (August), we lack context to explain the peak. Without knowing what the department represents and where the store is located, it is difficult to understand the underestimation fully.</li>
+</ul>
+<p><img src="/images/best22.png"></p>
+</blockquote>
+<blockquote>
+<p><strong>Worst prediction:</strong> Store 39 with a 47.62% error.</p>
+<p><strong>Key points:</strong></p>
+<ul>
+<li>The model used is <strong>SARIMA.</strong></li>
+<li>It is clear that the terms selected for the ARIMA model are incorrect.</li>
+<li>After correcting the model, by adjusting the AUTO ARIMA range (specifically, modifying the &ldquo;D&rdquo; value, which was preset to 1), the error was reduced from 47.62% to 15.06%. This correction also brought down the average error from 20.21% to 19.33%.</li>
+<li>Other cases may have similar issues.</li>
+</ul>
+<p><img src="/images/worst22.png"></p>
+<p>After the correction, the model changed from ARIMA(1,0,1)(1,1,0)[52] to ARIMA(1,1,2)(1,0,0)[52].</p>
+<p><img src="/images/worst22_corrected.png"></p>
+</blockquote>
+<h4 id="department-28-1">Department 28</h4>
+<blockquote>
+<p><strong>Summary key points:</strong></p>
+<ul>
+<li>The worst case shows an extremely high error percentage (119.76%).</li>
+<li>95% of combinations show correlated features, but only 23% of cases performed better with the SARIMAX model.</li>
+</ul>
+<p><img src="/images/summary28.png"></p>
+</blockquote>
+<blockquote>
+<p><strong>Best prediction:</strong> Store 23 with a 12.13% error.</p>
+<p><strong>Key points:</strong></p>
+<ul>
+<li>The best model is <strong>SARIMA</strong> (SARIMAX also trained).</li>
+<li>SARIMA generally tends to overestimate sales, while SARIMAX usually underestimates, a combination of both may be better.</li>
+</ul>
+<p><img src="/images/best28.png"></p>
+</blockquote>
+<blockquote>
+<p><strong>Worst prediction:</strong> Store 39 with a 119.76% error.</p>
+<p><strong>Key points:</strong></p>
+<ul>
+<li>The model used is <strong>SARIMA.</strong></li>
+<li>The high error percentage is driven by an extreme peak in sales during the last week of May. This peak occurred in 2011 but was not present in 2010 or 2009. We lack contextual information about the department and location to explain the sudden spike in 2011.</li>
+</ul>
+<p><img src="/images/worst28.png"></p>
+</blockquote>
+<h4 id="store-1">Store 1</h4>
+<blockquote>
+<p><strong>Summary key points:</strong></p>
+<ul>
+<li>The worst case has a significant error percentage (175.1%).</li>
+<li>The best case, however, shows a very strong result with an error of only 4.12%.</li>
+<li>70% of combinations show correlated features, but only 29% of the cases perform better with the SARIMAX model.</li>
+</ul>
+<p><img src="/images/summary1.png"></p>
+</blockquote>
+<blockquote>
+<p><strong>Best prediction:</strong> Department 95 with a 4.12% error.</p>
+<p><strong>Key points:</strong></p>
+<ul>
+<li>The best model is <strong>SARIMAX</strong> (SARIMA also trained).</li>
+<li>The prediction is quite accurate.</li>
+</ul>
+<p><img src="/images/best1.png"></p>
+</blockquote>
+<blockquote>
+<p><strong>Worst prediction:</strong> Department 59 with a 175.1% error.</p>
+<p><strong>Key points:</strong></p>
+<ul>
+<li>The best model is <strong>SARIMA</strong> (SARIMAX also trained).</li>
+<li>The high error is primarily due to an overestimation during the Christmas sales peak. In 2011, the peak was three times larger than in 2012, leading to the significant overestimation.</li>
+<li>Without more context, it&rsquo;s difficult to explain the large variation between the two years.</li>
+<li>Although SARIMA had a better RMSE, the SARIMAX model performed better when excluding the peak.</li>
+</ul>
+<p><img src="/images/worst1.png"></p>
+</blockquote>
+<h2 id="4-next-steps">4. Next steps</h2>
+<ul>
+<li>Train additional models (e.g., regression models) and apply bagging techniques.</li>
+<li>Develop dashboards to analyze store or Store-Department combinations.</li>
+<li>Train and optimize models for all Store-Department combinations.</li>
+</ul>
+<p><a href="https://github.com/guitrena/Walmart-Sales">Link to the GitHub repository</a></p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="/" >
+    &copy;  Guillermo Trenor 2024 
+  </a>
+    <div><div class="ananke-socials"><a href="http://linkedin.com/in/guillermo-trenor-navarro-2a18672ab" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a><a href="https://github.com/guitrena/" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition github link dib z-999 pt3 pt0-l mr1"
+        title="follow on GitHub - Opens in a new window"
+        aria-label="follow on GitHub - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+            
+          </span></a></div>
+
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

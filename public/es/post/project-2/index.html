@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Proyecto 2: Ventas de Walmart | Guillermo Trenor</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Análisis de las ventas de Walmart en 45 tiendas en EE. UU., con el objetivo de predecir las ventas semanales para diferentes combinaciones de tienda y sección, e investigar los factores clave que influyen en las tendencias de ventas.
+Puntos clave técnicos
+
+Fusión y limpieza de datos: Combinación de cuatro conjuntos de datos, manejando los valores faltantes en las características de promociones promediando los valores por tipo de tienda.
+Análisis estadístico: Realización de pruebas ANOVA y correlación de Pearson para analizar la relación entre las ventas y diversas características (Temperatura, IPC, Desempleo, etc.).
+Creación de un dashboard: Desarrollo de un tablero interactivo para visualizar tendencias de ventas, patrones estacionales y correlaciones por sección.
+Modelado de series temporales: Entrenamiento de modelos SARIMA y SARIMAX para la predicción de ventas semanales, seleccionando variables externas según la significancia de la correlación y utilizando AUTO ARIMA para la optimización.
+Evaluación de modelos: Análisis de los mejores y peores modelos, mejorando el rendimiento del modelo mediante ajustes de parámetros.
+
+Perspectivas económicas
+
+Efecto de las festividades en las ventas: Picos significativos durante las festividades, con ventas casi un 300% más altas en ciertas secciones para los casos estudiados.
+Tendencias estacionales: Algunas secciones, como el 28, muestran una fuerte correlación entre las ventas y la temperatura, con más ventas en temperaturas más bajas.
+Tendencias de disminución de ventas: Algunas secciones muestran una tendencia decreciente (por ejemplo, la sección 28 con una caída del 14%), posiblemente relacionada con indicadores económicos como el IPC y el desempleo.
+Perspectivas específicas de secciones: La dinámica de ventas varía ampliamente por sección, algunos presentan picos inesperados que no pueden explicarse sin más contexto.
+Desempeño del modelo: Las variables externas mejoran las predicciones en algunos casos, pero no en todos, lo que indica la complejidad de los patrones de ventas entre diferentes tiendas y secciones.
+">
+    <meta name="generator" content="Hugo 0.136.4">
+    
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.88b9752140ac8f6a7b3d156e04caf06413e4651761dfcf351d9e11e725aaabf2.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="/es/post/project-2/">
+    
+
+    <meta property="og:url" content="/es/post/project-2/">
+  <meta property="og:site_name" content="Guillermo Trenor">
+  <meta property="og:title" content="Proyecto 2: Ventas de Walmart">
+  <meta property="og:description" content="Análisis de las ventas de Walmart en 45 tiendas en EE. UU., con el objetivo de predecir las ventas semanales para diferentes combinaciones de tienda y sección, e investigar los factores clave que influyen en las tendencias de ventas.
+Puntos clave técnicos Fusión y limpieza de datos: Combinación de cuatro conjuntos de datos, manejando los valores faltantes en las características de promociones promediando los valores por tipo de tienda. Análisis estadístico: Realización de pruebas ANOVA y correlación de Pearson para analizar la relación entre las ventas y diversas características (Temperatura, IPC, Desempleo, etc.). Creación de un dashboard: Desarrollo de un tablero interactivo para visualizar tendencias de ventas, patrones estacionales y correlaciones por sección. Modelado de series temporales: Entrenamiento de modelos SARIMA y SARIMAX para la predicción de ventas semanales, seleccionando variables externas según la significancia de la correlación y utilizando AUTO ARIMA para la optimización. Evaluación de modelos: Análisis de los mejores y peores modelos, mejorando el rendimiento del modelo mediante ajustes de parámetros. Perspectivas económicas Efecto de las festividades en las ventas: Picos significativos durante las festividades, con ventas casi un 300% más altas en ciertas secciones para los casos estudiados. Tendencias estacionales: Algunas secciones, como el 28, muestran una fuerte correlación entre las ventas y la temperatura, con más ventas en temperaturas más bajas. Tendencias de disminución de ventas: Algunas secciones muestran una tendencia decreciente (por ejemplo, la sección 28 con una caída del 14%), posiblemente relacionada con indicadores económicos como el IPC y el desempleo. Perspectivas específicas de secciones: La dinámica de ventas varía ampliamente por sección, algunos presentan picos inesperados que no pueden explicarse sin más contexto. Desempeño del modelo: Las variables externas mejoran las predicciones en algunos casos, pero no en todos, lo que indica la complejidad de los patrones de ventas entre diferentes tiendas y secciones.">
+  <meta property="og:locale" content="es">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2024-10-22T11:00:59-04:00">
+    <meta property="article:modified_time" content="2024-10-22T11:00:59-04:00">
+
+  <meta itemprop="name" content="Proyecto 2: Ventas de Walmart">
+  <meta itemprop="description" content="Análisis de las ventas de Walmart en 45 tiendas en EE. UU., con el objetivo de predecir las ventas semanales para diferentes combinaciones de tienda y sección, e investigar los factores clave que influyen en las tendencias de ventas.
+Puntos clave técnicos Fusión y limpieza de datos: Combinación de cuatro conjuntos de datos, manejando los valores faltantes en las características de promociones promediando los valores por tipo de tienda. Análisis estadístico: Realización de pruebas ANOVA y correlación de Pearson para analizar la relación entre las ventas y diversas características (Temperatura, IPC, Desempleo, etc.). Creación de un dashboard: Desarrollo de un tablero interactivo para visualizar tendencias de ventas, patrones estacionales y correlaciones por sección. Modelado de series temporales: Entrenamiento de modelos SARIMA y SARIMAX para la predicción de ventas semanales, seleccionando variables externas según la significancia de la correlación y utilizando AUTO ARIMA para la optimización. Evaluación de modelos: Análisis de los mejores y peores modelos, mejorando el rendimiento del modelo mediante ajustes de parámetros. Perspectivas económicas Efecto de las festividades en las ventas: Picos significativos durante las festividades, con ventas casi un 300% más altas en ciertas secciones para los casos estudiados. Tendencias estacionales: Algunas secciones, como el 28, muestran una fuerte correlación entre las ventas y la temperatura, con más ventas en temperaturas más bajas. Tendencias de disminución de ventas: Algunas secciones muestran una tendencia decreciente (por ejemplo, la sección 28 con una caída del 14%), posiblemente relacionada con indicadores económicos como el IPC y el desempleo. Perspectivas específicas de secciones: La dinámica de ventas varía ampliamente por sección, algunos presentan picos inesperados que no pueden explicarse sin más contexto. Desempeño del modelo: Las variables externas mejoran las predicciones en algunos casos, pero no en todos, lo que indica la complejidad de los patrones de ventas entre diferentes tiendas y secciones.">
+  <meta itemprop="datePublished" content="2024-10-22T11:00:59-04:00">
+  <meta itemprop="dateModified" content="2024-10-22T11:00:59-04:00">
+  <meta itemprop="wordCount" content="2501">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Proyecto 2: Ventas de Walmart">
+  <meta name="twitter:description" content="Análisis de las ventas de Walmart en 45 tiendas en EE. UU., con el objetivo de predecir las ventas semanales para diferentes combinaciones de tienda y sección, e investigar los factores clave que influyen en las tendencias de ventas.
+Puntos clave técnicos Fusión y limpieza de datos: Combinación de cuatro conjuntos de datos, manejando los valores faltantes en las características de promociones promediando los valores por tipo de tienda. Análisis estadístico: Realización de pruebas ANOVA y correlación de Pearson para analizar la relación entre las ventas y diversas características (Temperatura, IPC, Desempleo, etc.). Creación de un dashboard: Desarrollo de un tablero interactivo para visualizar tendencias de ventas, patrones estacionales y correlaciones por sección. Modelado de series temporales: Entrenamiento de modelos SARIMA y SARIMAX para la predicción de ventas semanales, seleccionando variables externas según la significancia de la correlación y utilizando AUTO ARIMA para la optimización. Evaluación de modelos: Análisis de los mejores y peores modelos, mejorando el rendimiento del modelo mediante ajustes de parámetros. Perspectivas económicas Efecto de las festividades en las ventas: Picos significativos durante las festividades, con ventas casi un 300% más altas en ciertas secciones para los casos estudiados. Tendencias estacionales: Algunas secciones, como el 28, muestran una fuerte correlación entre las ventas y la temperatura, con más ventas en temperaturas más bajas. Tendencias de disminución de ventas: Algunas secciones muestran una tendencia decreciente (por ejemplo, la sección 28 con una caída del 14%), posiblemente relacionada con indicadores económicos como el IPC y el desempleo. Perspectivas específicas de secciones: La dinámica de ventas varía ampliamente por sección, algunos presentan picos inesperados que no pueden explicarse sin más contexto. Desempeño del modelo: Las variables externas mejoran las predicciones en algunos casos, pero no en todos, lo que indica la complejidad de los patrones de ventas entre diferentes tiendas y secciones.">
+
+      
+    
+	
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('/images/walmart_empleado.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/es/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        Guillermo Trenor
+      
+    </a>
+    <div class="flex-l items-center">
+      
+<h4></h4>
+<ul class="pl0 mr3">
+    
+    <li class="list f5 f4-ns fw4 dib pr3">
+        <a class="hover-white no-underline white-90" href="/post/project-2/">en</a>
+    </li>
+    
+</ul>
+
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/es/about/" title="Acerca de mí pagina">
+              Acerca de mí
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/es/contact/" title="Contacto pagina">
+              Contacto
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/es/post/" title="Proyectos pagina">
+              Proyectos
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"><a href="http://linkedin.com/in/guillermo-trenor-navarro-2a18672ab" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a><a href="https://github.com/guitrena/" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition github link dib z-999 pt3 pt0-l mr1"
+        title="follow on GitHub - Opens in a new window"
+        aria-label="follow on GitHub - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+            
+          </span></a></div>
+
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">Proyecto 2: Ventas de Walmart</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+
+
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Proyectos
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+
+
+<h1 class="f1 athelas mt3 mb1">Proyecto 2: Ventas de Walmart</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2024-10-22T11:00:59-04:00">octubre 22, 2024</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100"><h1 id="ventas-de-walmart">Ventas de Walmart</h1>
+<h2 id="0-introducción">0. Introducción</h2>
+<p>Este proyecto se basa en una <strong>competición de Kaggle lanzada por el equipo de reclutamiento de Walmart.</strong> El enlace a la competición es: <a href="https://www.kaggle.com/competitions/walmart-recruiting-store-sales-forecasting/overview">https://www.kaggle.com/competitions/walmart-recruiting-store-sales-forecasting/overview</a></p>
+<p>La descripción de la competición es la siguiente: &ldquo;En esta competición, los solicitantes de empleo reciben datos históricos de ventas de 45 tiendas de Walmart ubicadas en diferentes regiones. Cada tienda contiene muchas secciones, y los participantes deben proyectar las ventas para cada sección en cada tienda. Para agregar un desafío adicional, las promociones de festivos seleccionados están incluidos en el conjunto de datos.&rdquo;</p>
+<p>El objetivo de la competencia fue predecir las ventas semanales para cada tienda, sección y fecha. Los participantes debían presentar predicciones para un año usando datos históricos de años anteriores. <em>Para las predicciones, solo se proporcionaron las características sin acceso a la variable objetivo, lo que imposibilita la evaluación del rendimiento en el conjunto de prueba.</em></p>
+<p>Aunque no fue requerido, realizaremos un análisis exhaustivo. Debido al gran volumen de datos y la variedad de secciones, hemos definido una metodología para analizar las ventas por sección, comenzando con el desarrollo de un dashboard. Luego, se presentarán algunos casos de ejemplo.</p>
+<h2 id="1-datos">1. Datos</h2>
+<h3 id="descripción-de-los-conjuntos-de-datos">Descripción de los conjuntos de datos</h3>
+<p>l proyecto está compuesto por <strong>4 conjuntos de datos diferentes:</strong></p>
+<ul>
+<li><strong>stores.csv:</strong> contiene información anonimizada sobre las 45 tiendas, indicando el tipo y tamaño de la tienda.</li>
+<li><strong>train.csv:</strong> datos históricos de entrenamiento que cubren desde el 05-02-2010 hasta el 01-11-2012.</li>
+</ul>
+<blockquote>
+<p>Este archivo contiene los siguientes campos:</p>
+<p>Store -  número de tienda <!-- raw HTML omitted -->
+Dept - número de sección
+Date - semana  <!-- raw HTML omitted -->
+Weekly_Sales -  ventas de la sección en la tienda dada
+IsHoliday - si la semana es festiva o no</p>
+</blockquote>
+<ul>
+<li><strong>test.csv:</strong> Es idéntico a train.csv, excepto que no tiene ventas semanales.</li>
+<li><strong>features.csv:</strong> Datos adicionales relacionados con la tienda, sección y actividad regional en las fechas dadas.</li>
+</ul>
+<blockquote>
+<p>Contiene los siguientes campos:</p>
+<p>Store - número de tienda
+Date - semana
+Temperature - temperatura promedio en la región
+Fuel_Price - costo del combustible en la región
+MarkDown1-5 - datos anonimizados relacionados con promociones que Walmart realizó. Los valores faltantes están marcados con NA.
+CPI - índice de precios de consumo<!-- raw HTML omitted -->
+Unemployment - tasa de desempleo
+IsHoliday -  si la semana es festiva o no</p>
+</blockquote>
+<p><strong>En el notebook <em>data.ipynb</em>, estos conjuntos de datos fueron fusionados en uno solo.</strong></p>
+<h3 id="manejo-de-valores-faltantes">Manejo de valores faltantes</h3>
+<p>Los únicos valores faltantes se encuentran en las características de promociones (MarkDown1 a 5). Estas no tienen datos antes del 11-11-2011, y aún después de esa fecha, algunos valores siguen faltando. Por lo tanto, aunque el conjunto de datos abarca casi tres años, los datos de promociones solo están disponibles para un año.</p>
+<p><img src="/images/period_markdown_data.png"></p>
+<p>as promociones son específicas de cada tienda, lo que dificulta el relleno de valores faltantes. Para abordar esto, examinamos las tendencias de estas variables en diferentes tipos de tiendas, trazando los valores promedio, máximo y mínimo a lo largo del tiempo <em>(ver notebook data_exploration.ipynb).</em> Descubrimos que las tiendas del mismo tipo mostraban tendencias y dimensiones similares. Con base en esto, rellenamos los valores faltantes usando el promedio para el tipo de tienda correspondiente y la fecha. Cuando no había datos disponibles para ninguna tienda de un grupo dado, usamos 0 como valor por defecto.</p>
+<p>Sin embargo, seguimos teniendo valores faltantes para el periodo inicial, donde no hay datos de promociones. Este problema será abordado durante la fase de modelado.</p>
+<h2 id="2-análisis">2. Análisis</h2>
+<h3 id="archivo-data_explorationipynb">Archivo data_exploration.ipynb</h3>
+<p>En este notebook realizamos una exploración de datos para comprender mejor el conjunto de datos. El análisis se divide en las siguientes secciones:</p>
+<ul>
+<li><strong>Eliminación de ventas negativas:</strong> Filtrar las filas donde las ventas semanales son negativas, ya que no son válidas.</li>
+<li><strong>Tipos de tiendas:</strong> Comprender la clasificación de tiendas y reclasificar dos tiendas según el tamaño y la presencia de secciones.</li>
+<li><strong>Relleno de promociones faltantes:</strong> Explicado en la sección <em>1. Datos (relleno de valores faltantes).</em></li>
+<li><strong>Por Sección:</strong>  Agrupar los datos por sección para obtener estadísticas generales (e.g., ventas, porcentaje de ventas totales). Además, realizar pruebas ANOVA para examinar correlaciones entre variables cualitativas (&lsquo;IsHoliday&rsquo;) y &lsquo;Weekly_Sales&rsquo;, creando diagramas de caja si es significativo (p-valor &lt; 0.01). Finalmente, realizar pruebas de correlación de Pearson para variables cuantitativas (&lsquo;Temperature&rsquo;, &lsquo;CPI&rsquo;, &lsquo;Unemployment&rsquo;, &lsquo;Fuel_Price&rsquo;) y mostrar gráficos de regresión si la correlación es significativa (p-valor &lt; 0.01).</li>
+<li><strong>Casos de ejemplo:</strong> Visualización de gráficos necesarios para analizar casos específicos.</li>
+</ul>
+<h3 id="dashboard">Dashboard</h3>
+<p>Como se mencionó anteriormente, el conjunto de datos es grande y necesita segmentarse para un análisis más enfocado. Se desarrolló un dashboard para facilitar esto, proporcionando varios elementos de análisis para cada sección. Aunque no es definitivo para sacar conclusiones, ayuda a comprender el comportamiento de las secciones y sirve como punto de partida para la generación de hipótesis.</p>
+<p><img src="/images/dashboard_example28.png"></p>
+<p>El dashboard consta de cuatro secciones:</p>
+<ul>
+<li>
+<p><strong>Selección de sección:</strong> Permite a los usuarios seleccionar una sección a través de un menú desplegable y mostrar su información mediante un botón.</p>
+</li>
+<li>
+<p><strong>Estadísticas generales:</strong></p>
+</li>
+</ul>
+<blockquote>
+<p>    - General: Periodo de tiempo, ventas totales, porcentaje de ventas globales y clasificación por ventas.</p>
+<p>    - Presencia en tiendas: Porcentaje de tiendas que tienen la sección, desglosado por tipo de tienda..</p>
+<p>    - Distribución de ventas semanales: Un diagrama de caja de las ventas semanales de la sección seleccionada durante el periodo especificado.</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>Descomposición estacional:</strong> Muestra las ventas observadas, la tendencia, la estacionalidad y los componentes residuales para las ventas semanales de la sección seleccionada.</p>
+</li>
+<li>
+<p><strong>Correlación de ventas semanales con otras variables:</strong> : Gráficos de regresión para variables cuantitativas si se encuentra una correlación significativa en la prueba de Pearson (p-valor &lt; 0.01) y diagramas de caja para variables cualitativas si los resultados de ANOVA son significativos. Si no se encuentra una correlación significativa, el gráfico se muestra en gris con un mensaje que indica el p-valor. Se realizan cinco pruebas:</p>
+</li>
+</ul>
+<blockquote>
+<p>    - Temperature vs Weekly_Sales</p>
+<p>    - IsHoliday vs Weekly_Sales</p>
+<p>    - CPI vs Weekly_Sales</p>
+<p>    - Unemployment vs Weekly_Sales</p>
+<p>    - Fuel_Price vs Weekly_Sales</p>
+</blockquote>
+<h3 id="casos-de-ejemplo">Casos de ejemplo</h3>
+<p>Para demostrar la utilidad del dashboard, exploramos dos secciones de ejemplo. El dashboard sirve como punto de partida para examinar diversos factores que influyen en la dinámica de ventas en la sección.</p>
+<p>Es importante señalar que el conjunto de datos está anonimizado, lo que dificulta su análisis al faltar detalles contextuales.</p>
+<h4 id="sección-28">Sección 28</h4>
+<p><img src="/images/dashboard_example28.png"></p>
+<p>En el dashboard, vemos que las ventas de esta sección están correlacionadas con la temperatura, el CPI, el desempleo y los precios del combustible. Sin embargo, esta correlación no implica necesariamente causalidad.</p>
+<blockquote>
+<p>Para investigar más a fondo la relación entre la temperatura y las ventas, trazamos las dos variables a lo largo del tiempo.</p>
+<p><img src="/images/temperature_sales28.png"></p>
+<p>Basado en el gráfico, parece razonable concluir que las temperaturas más bajas podrían impulsar mayores ventas en esta sección. Sin embargo, se necesita más contexto para confirmar esta hipótesis.</p>
+</blockquote>
+<blockquote>
+<p>Para las demás características correlacionadas, los gráficos de regresión son menos claros en comparación con el gráfico de temperatura. Para profundizar, trazamos la evolución de estas características a lo largo del tiempo.</p>
+<p><img src="/images/economic_indicators.png"></p>
+<p>Las tendencias para el IPC, los precios del combustible y el desempleo son evidentes: el IPC y los precios del combustible están aumentando, mientras que el desempleo está disminuyendo. Las ventas de la Sección 28 también muestran una tendencia a la baja, con una caída del 14%. Esto explica la correlación entre las ventas y estas características. <!-- raw HTML omitted --></p>
+<p><img src="/images/trend28.png"></p>
+<p>Sin embargo, no podemos concluir definitivamente la causalidad debido a la falta de información contextual. Por ejemplo, el segundo invierno tuvo temperaturas más cálidas, lo que podría explicar la disminución en las ventas.</p>
+</blockquote>
+<h5 id="_conclusiones_"><em>Conclusiones</em></h5>
+<ul>
+<li><strong>Las ventas en esta sección están influenciadas por la temperatura.</strong> Las temperaturas más bajas se asocian con mayores ventas.</li>
+<li><strong>Tendencia de ventas decreciendo en un 14%.</strong> Esta disminución podría atribuirse al aumento del IPC o inviernos más cálidos, pero se requiere más contexto para confirmar cualquiera de las hipótesis.</li>
+</ul>
+<h4 id="sección-22">Sección 22</h4>
+<p><img src="/images/dashboard_example22.png"></p>
+<p>El dashboard indica correlaciones entre las ventas en esta sección y todas las variables clave. Sin embargo, la correlación no necesariamente implica causalidad.</p>
+<blockquote>
+<p>Para investigar más la relación entre la temperatura y las ventas, trazamos ambas variables a lo largo del tiempo.</p>
+<p><img src="/images/temperature_sales22.png"></p>
+<p>El gráfico sugiere que la temperatura no afecta significativamente las ventas, que se mantienen estables excepto por dos picos. Exploraremos estos picos a continuación.</p>
+</blockquote>
+<blockquote>
+<p>Para investigar la relación entre los periodos de vacaciones y las ventas, también los trazamos.</p>
+<p><img src="/images/holidays_sales22.png"></p>
+<p>Los dos picos coinciden exactamente con el Día de Acción de Gracias y Navidad. Como se muestra en el gráfico estacional del dashboard, las ventas durante estas semanas son casi un 100% más altas de lo habitual.</p>
+</blockquote>
+<blockquote>
+<p>Para las demás características (CPI, desempleo, precio del combustible), la relación es similar a la de la Sección 28. El CPI y los precios del combustible tienden al alza, el desempleo tiende a la baja y las ventas en la Sección 22 muestran una tendencia decreciente (8.7%).</p>
+<p><img src="/images/trend22.png"></p>
+<p>Sin embargo, sin más contexto, no podemos afirmar la causalidad.</p>
+</blockquote>
+<h5 id="_conclusiones_-1"><em>Conclusiones</em></h5>
+<ul>
+<li><strong>Dos picos de ventas ocurren durante el Día de Acción de Gracias y Navidad (+100%).</strong></li>
+<li><strong>Tendencia de ventas decreciendo en un 8.7%.</strong> Esto puede estar vinculado al aumento del IPC, aunque se necesita más contexto.</li>
+</ul>
+<h2 id="3-modelización">3. Modelización</h2>
+<p>El objetivo original de la competición era estimar las ventas semanales para el conjunto de prueba, pero en nuestro caso, estamos estimando las ventas para el último año de datos, comparando las predicciones con los valores reales. Por lo tanto, eliminamos las variables de promociones (que solo están presentes en el último año), ya que no podemos extrapolarlas para todo el año sin más información.</p>
+<h3 id="proceso">Proceso</h3>
+<p>Cuando se trata de modelado, el primer paso crítico es elegir la estrategia adecuada. Esto se vuelve aún más importante cuando se trabaja con un conjunto de datos grande que debe dividirse en partes manejables.</p>
+<p>En este caso, entrenamos varios modelos considerando cada combinación de sección y tienda. Los modelos seleccionados son similares en su naturaleza:</p>
+<ul>
+<li><strong>SARIMA:</strong> Un modelo de series temporales diseñado para manejar datos con patrones estacionales.</li>
+<li><strong>SARIMAX:</strong> Una extensión de SARIMA que incluye variables externas para mejorar el análisis.</li>
+</ul>
+<p>Después de seleccionar los modelos, implementamos una estrategia para elegir las variables externas de cada modelo. Esto se basó en los resultados de las pruebas ANOVA y Pearson realizadas anteriormente, que comparaban cada característica con las ventas semanales. Si una característica mostraba una correlación significativa, se incluía en el modelo SARIMAX. En algunos casos donde no había características correlacionadas, el modelo SARIMAX no se entrenaba.</p>
+<p>Para ahorrar tiempo, los modelos se entrenaron utilizando AUTO ARIMA, que selecciona automáticamente los términos apropiados para cada modelo.</p>
+<p>Finalmente, graficamos los datos históricos junto con el pronóstico para analizar los resultados.</p>
+<p>Además, decidimos limitar esta estrategia a un número reducido de modelos. Específicamente, elegimos entrenar modelos solo para las secciones 22 y 28, y la tienda 1, lo que redujo el número de casos de 3,211 a 160. Esta decisión se debió a limitaciones computacionales. Por ejemplo, el lote seleccionado tomó casi 6 horas en procesarse. Estimando el tiempo requerido para entrenar todo el conjunto de datos, hubiera tomado aproximadamente 120 horas.</p>
+<p>A continuación, se presenta un diagrama que resume todo el proceso:
+<img src="/images/process_diagram.png"></p>
+<h3 id="resultados">Resultados</h3>
+<p>Entrenamos las combinaciones tienda-sección para los siguientes casos:</p>
+<ul>
+<li>Sección 22</li>
+<li>Sección 28</li>
+<li>Tienda 1</li>
+</ul>
+<p>Para cada grupo, presentamos un resumen que muestra el mejor, el promedio y el peor porcentaje de error (RMSE/Promedio de Ventas Semanales) dentro del grupo. También mostramos el desglose porcentual de los modelos que tuvieron el mejor rendimiento, categorizados como <strong>SARIMA</strong> (sin SARIMAX entrenado), <strong>SARIMA(x)</strong> (SARIMA fue el mejor modelo entre los dos), y <strong>SARIMAX</strong> (SARIMAX fue el mejor modelo entre los dos).</p>
+<p>Después de eso, graficamos y analizamos los mejores y peores casos dentro de cada grupo, corrigiendo el modelo si es necesario.</p>
+<h4 id="sección-22-1">Sección 22</h4>
+<blockquote>
+<p><strong>Puntos clave del resumen:</strong></p>
+<ul>
+<li>Los errores porcentuales mínimos y promedio son relativamente similares. La diferencia parece provenir de los valores extremos (el peor caso tiene un error de 47.62%).</li>
+<li>Más del 70% de las combinaciones tienen características correlacionadas.</li>
+<li>Las variables externas son relevantes solo en el 32% de los casos.</li>
+</ul>
+<p><img src="/images/summary22.png"></p>
+</blockquote>
+<blockquote>
+<p><strong>Mejor predicción:</strong> Tienda 23 con un error de 12.13%.</p>
+<p><strong>Puntos clave:</strong></p>
+<ul>
+<li>El modelo utilizado es <strong>SARIMA.</strong></li>
+<li>Las peores predicciones se producen durante dos picos de ventas (Navidad y la última semana de agosto).</li>
+<li>El pico de Navidad no está tan mal pronosticado como parece. La semana anterior a Navidad se sobreestima por 5,954, y la semana de Navidad se subestima por 6,784. Si estas dos semanas se agrupan en un &ldquo;período navideño&rdquo;, la subestimación es de solo 838 para todo el período.</li>
+<li>En cuanto al segundo período (agosto), no tenemos contexto para explicar el pico. Sin saber qué representa la sección y dónde está ubicada la tienda, es difícil comprender completamente la subestimación.</li>
+</ul>
+<p><img src="/images/best22.png"></p>
+</blockquote>
+<blockquote>
+<p><strong>Peor predicción:</strong> Tienda 39 con un error de 47.62%.</p>
+<p><strong>Puntos clave:</strong></p>
+<ul>
+<li>El modelo utilizado es <strong>SARIMA.</strong></li>
+<li>Es evidente que los términos seleccionados para el modelo ARIMA son incorrectos.</li>
+<li>Después de corregir el modelo, ajustando el rango de AUTO ARIMA (específicamente modificando el valor &ldquo;D&rdquo;, que estaba preestablecido en 1), el error se redujo del 47.62% al 15.06%. Esta corrección también redujo el error promedio del 20.21% al 19.33%.</li>
+<li>Otros casos pueden tener problemas similares.</li>
+</ul>
+<p><img src="/images/worst22.png"></p>
+<p>Después de la corrección, el modelo cambió de ARIMA(1,0,1)(1,1,0)[52] a ARIMA(1,1,2)(1,0,0)[52].</p>
+<p><img src="/images/worst22_corrected.png"></p>
+</blockquote>
+<h4 id="sección-28-1">Sección 28</h4>
+<blockquote>
+<p><strong>Puntos clave del resumen:</strong></p>
+<ul>
+<li>El peor caso muestra un porcentaje de error extremadamente alto (119.76%).</li>
+<li>El 95% de las combinaciones muestran características correlacionadas, pero solo el 23% de los casos rindieron mejor con el modelo SARIMAX.</li>
+</ul>
+<p><img src="/images/summary28.png"></p>
+</blockquote>
+<blockquote>
+<p><strong>Mejor predicción:</strong> Tienda 23 con un error de 12.13%.</p>
+<p><strong>Puntos clave:</strong></p>
+<ul>
+<li>El mejor modelo es <strong>SARIMA</strong> (SARIMAX también entrenado).</li>
+<li>SARIMA generalmente tiende a sobreestimar las ventas, mientras que SARIMAX generalmente subestima. Una combinación de ambos podría ser mejor.</li>
+</ul>
+<p><img src="/images/best28.png"></p>
+</blockquote>
+<blockquote>
+<p><strong>Peor predicción:</strong> Tienda 39 con un error de 119.76%.</p>
+<p><strong>Puntos clave:</strong></p>
+<ul>
+<li>El modelo utilizado es <strong>SARIMA.</strong></li>
+<li>El alto porcentaje de error es impulsado por un pico extremo en ventas durante la última semana de mayo. Este pico ocurrió en 2011, pero no estuvo presente en 2010 o 2009. Nos falta información contextual sobre la sección y la ubicación para explicar el aumento repentino en 2011.</li>
+</ul>
+<p><img src="/images/worst28.png"></p>
+</blockquote>
+<h4 id="tienda-1">Tienda 1</h4>
+<blockquote>
+<p><strong>Puntos clave del resumen:</strong></p>
+<ul>
+<li>El peor caso tiene un porcentaje de error significativo (175.1%).</li>
+<li>Sin embargo, el mejor caso muestra un resultado muy sólido con un error de solo 4.12%.</li>
+<li>El 70% de las combinaciones muestran características correlacionadas, pero solo el 29% de los casos rindieron mejor con el modelo SARIMAX.</li>
+</ul>
+<p><img src="/images/summary1.png"></p>
+</blockquote>
+<blockquote>
+<p><strong>Mejor predicción:</strong> Sección 95 con un error de 4.12%.</p>
+<p><strong>Puntos clave:</strong></p>
+<ul>
+<li>El mejor modelo es <strong>SARIMAX</strong> (SARIMA también entrenado).</li>
+<li>La predicción es bastante precisa.</li>
+</ul>
+<p><img src="/images/best1.png"></p>
+</blockquote>
+<blockquote>
+<p><strong>Peor predicción:</strong> Sección 59 con un error de 175.1%.</p>
+<p><strong>Puntos clave:</strong></p>
+<ul>
+<li>El mejor modelo es <strong>SARIMA</strong> (SARIMAX también entrenado).</li>
+<li>El alto error se debe principalmente a una sobreestimación durante el pico de ventas de Navidad. En 2011, el pico fue tres veces mayor que en 2012, lo que provocó la sobreestimación significativa.</li>
+<li>Sin más contexto, es difícil explicar la gran variación entre los dos años.</li>
+<li>Aunque SARIMA tuvo un mejor RMSE, el modelo SARIMAX funcionó mejor al excluir el pico.</li>
+</ul>
+<p><img src="/images/worst1.png"></p>
+</blockquote>
+<h2 id="4-próximos-pasos">4. Próximos pasos</h2>
+<ul>
+<li>Entrenar modelos adicionales (por ejemplo, modelos de regresión) y aplicar técnicas de bagging.</li>
+<li>Desarrollar dashboards para analizar combinaciones tienda-sección.</li>
+<li>Entrenar y optimizar modelos para todas las combinaciones tienda-sección.</li>
+</ul>
+<p><a href="https://github.com/guitrena/Walmart-Sales">Link to the GitHub repository</a></p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="/es/" >
+    &copy;  Guillermo Trenor 2024 
+  </a>
+    <div><div class="ananke-socials"><a href="http://linkedin.com/in/guillermo-trenor-navarro-2a18672ab" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a><a href="https://github.com/guitrena/" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition github link dib z-999 pt3 pt0-l mr1"
+        title="follow on GitHub - Opens in a new window"
+        aria-label="follow on GitHub - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+            
+          </span></a></div>
+
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
