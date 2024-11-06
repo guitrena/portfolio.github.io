@@ -9,6 +9,7 @@ SectionPagesMenu = "main"
 googleAnalytics = ""
 enableRobotsTXT = true
 
+googleAnalytics = 'G-Z0PW1GWL35'
 
 [pagination]
 pagerSize = 3 # this is set low for demonstrating with dummy content. Set to a higher number
